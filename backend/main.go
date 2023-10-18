@@ -13,12 +13,12 @@ func helloHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	// Define a handler for the '/hello' route
-	http.HandleFunc("/hello", helloHandler)
+	// Define a handler for the '/temperature/set' route
+	http.HandleFunc("/temperature/set", helloHandler)
 
-	// Start the HTTP server on port 8080
-	fmt.Println("Server is listening on :8080...")
-	err := http.ListenAndServe(":8080", nil)
+	// Start the HTTP server on port 1234
+	fmt.Println("Server is listening on :1234...")
+	err := http.ListenAndServe(":1234", nil)
 	if err != nil {
 		fmt.Println("Error:", err)
 	}
