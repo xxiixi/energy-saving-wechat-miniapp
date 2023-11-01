@@ -2,12 +2,41 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"net/http"
+	"os"
 )
 
 func helloHandler(w http.ResponseWriter, r *http.Request) {
 	// Set the content type to plain text
 	w.Header().Set("Content-Type", "text/plain")
+
+	// Read the request body
+	body, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		http.Error(w, "Error reading request body", http.StatusInternalServerError)
+		return
+	}
+	defer r.Body.Close()
+
+	// Log the request body to a file
+	file, err := os.OpenFile("requests.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+	if err != nil {
+		http.Error(w, "Error opening log file", http.StatusInternalServerError)
+		return
+	}
+	defer file.Close()
+
+	if _, err := file.Write(body); err != nil {
+		http.Error(w, "Error writing to log file", http.StatusInternalServerError)
+		return
+	}
+
+	if _, err := file.WriteString("\n"); err != nil {
+		http.Error(w, "Error writing to log file", http.StatusInternalServerError)
+		return
+	}
+
 	// Write the response to the client
 	fmt.Fprintf(w, "Hello dddddd")
 }
@@ -23,4 +52,3 @@ func main() {
 		fmt.Println("Error:", err)
 	}
 }
-
