@@ -8,6 +8,8 @@ import (
 	"EnergySaving/store"
 	"EnergySaving/store/airconditioner"
 	"EnergySaving/store/switchsensor"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 func NewEnergyDB(sqlAddress, username, password string) (*sql.DB, error) {
