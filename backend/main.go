@@ -1,11 +1,12 @@
 package main
 
 import (
-	"EnergySaving/application"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
+
+	"EnergySaving/application"
 )
 
 func main() {
