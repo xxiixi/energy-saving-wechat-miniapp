@@ -10,6 +10,7 @@ import (
 	"EnergySaving/application"
 	"EnergySaving/application/sensor"
 	"EnergySaving/application/user"
+	"EnergySaving/application/alert"
 )
 
 func addHandlers(app *application.App) {
