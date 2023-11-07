@@ -20,25 +20,26 @@ func (dao *Store) UpdateStatus(sensorID uint32, roomID uint32, status store.Stat
 	return err
 }
 
-func (dao *Store) GetRoomStatus(roomID uint32) (store.Status, error) {
-	query := `SELECT status FROM switch WHERE room_id = ?`
+func (dao *Store) GetRoomStatus(roomID uint32) (uint32, store.Status, error) {
+	query := `SELECT sensor_id, status FROM switch WHERE room_id = ?`
 	rows, err := dao.db.Query(query, roomID)
 	if err != nil {
-		return store.StatusClose, err
+		return 0, store.StatusClose, err
 	}
 	defer rows.Close()
-	var sensorStatus store.Status
 	for rows.Next() {
-		err := rows.Scan(&sensorStatus)
+		var sensorID uint32
+		var sensorStatus store.Status
+		err := rows.Scan(&sensorID, &sensorStatus)
 		if err != nil {
-			return store.StatusClose, err
+			return 0, store.StatusClose, err
 		}
 		if sensorStatus == store.StatusOpen {
-			return store.StatusOpen, nil
+			return sensorID, store.StatusOpen, nil
 		}
 	}
 	if err := rows.Err(); err != nil {
-		return store.StatusClose, err
+		return 0, store.StatusClose, err
 	}
-	return store.StatusClose, nil
+	return 0, store.StatusClose, nil
 }

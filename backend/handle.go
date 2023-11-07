@@ -9,6 +9,7 @@ import (
 
 	"EnergySaving/application"
 	"EnergySaving/application/sensor"
+	"EnergySaving/application/user"
 )
 
 func addHandlers(app *application.App) {
@@ -127,19 +128,86 @@ func setACStatusHandlerWrapper(app *application.App) http.HandlerFunc {
 
 func alertListHandlerWrapper(app *application.App) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		helloHandler(app, w, r)
+		w.Header().Set("Content-Type", "text/plain")
+		// Set the sensor status
+		alerts, err = alert.GetAlertList(app)
+		if err == nil {
+			fmt.Fprintf(w, alerts)
+		} else {
+			fmt.Fprintf(w, "Error: %v", err)
+		}
 	}
 }
 
 func solveAlertHandlerWrapper(app *application.App) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		helloHandler(app, w, r)
+		w.Header().Set("Content-Type", "text/plain")
+		// Read the request body
+		bodyBytes, err := ioutil.ReadAll(r.Body)
+		if err != nil {
+			http.Error(w, "Error reading request body", http.StatusInternalServerError)
+			return
+		}
+		defer r.Body.Close()
+		// Parse the body content
+		values, err := url.ParseQuery(string(bodyBytes))
+		if err != nil {
+			http.Error(w, "Error parsing request body", http.StatusBadRequest)
+			return
+		}
+		comment := values.Get("comment")
+		// Parse sensor_id and room_id
+		alertIDStr := values.Get("alert_id")
+		alertID, err := strconv.ParseUint(alertIDStr, 10, 32)
+		if err != nil {
+			http.Error(w, "Invalid alert_id value in request body", http.StatusBadRequest)
+			return
+		}
+		userIDStr := values.Get("user_id")
+		userID, err := strconv.ParseUint(userIDStr, 10, 32)
+		if err != nil {
+			http.Error(w, "Invalid user_id value in request body", http.StatusBadRequest)
+			return
+		}
+		err = alert.SolveAlert(app, uint32(alertID), uint32(userID), comment)
+		if err == nil {
+			fmt.Fprintf(w, "OK")
+		} else {
+			fmt.Fprintf(w, "Error: %v", err)
+		}
 	}
 }
 
 func getRewardsHandlerWrapper(app *application.App) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		helloHandler(app, w, r)
+		w.Header().Set("Content-Type", "text/plain")
+		// Read the request body
+		bodyBytes, err := ioutil.ReadAll(r.Body)
+		if err != nil {
+			http.Error(w, "Error reading request body", http.StatusInternalServerError)
+			return
+		}
+		defer r.Body.Close()
+		// Parse the body content
+		values, err := url.ParseQuery(string(bodyBytes))
+		if err != nil {
+			http.Error(w, "Error parsing request body", http.StatusBadRequest)
+			return
+		}
+		// Parse sensor_id and room_id
+		id := values.Get("user_id")
+		userID, err := strconv.ParseUint(id, 10, 32)
+		if err != nil {
+			http.Error(w, "Invalid userID value in request body", http.StatusBadRequest)
+			return
+		}
+		// Set the sensor status
+		point, err = user.GetUserRewardPoint(app, uint32(userID))
+		if err == nil {
+			fmt.Fprintf(w, point)
+		} else {
+			fmt.Fprintf(w, "Error: %v", err)
+		}
 	}
 }
 

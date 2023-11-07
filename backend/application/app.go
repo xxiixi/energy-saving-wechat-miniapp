@@ -8,6 +8,8 @@ import (
 	"EnergySaving/store"
 	"EnergySaving/store/airconditioner"
 	"EnergySaving/store/switchsensor"
+	"EnergySaving/store/alert"
+	"EnergySaving/store/user"
 
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -28,6 +30,8 @@ func NewEnergyDB(sqlAddress, username, password string) (*sql.DB, error) {
 type App struct {
 	ACSensorStore     store.ACSensor
 	SwitchSensorStore store.SwitchSensor
+	AlertsStore       store.AlertStore
+	UserStore         store.UserStore
 }
 
 func NewApp() (*App, error) {
@@ -38,5 +42,7 @@ func NewApp() (*App, error) {
 	return &App{
 		ACSensorStore:     airconditioner.NewACSensorDAO(tStore),
 		SwitchSensorStore: switchsensor.NewSwitchSensorDAO(tStore),
+		AlertsStore:       alert.NewAlertDAO(tStore),
+		UserStore:         user.NewUserDAO(tStore),
 	}, nil
 }
