@@ -12,11 +12,11 @@ const (
 // ACSensor ac sensor store
 type ACSensor interface {
 	UpdateStatus(sensorID uint32, roomID uint32, status Status) error
-	GetRoomStatus(roomID uint32) (Status, error)
+	GetRoomStatus(roomID uint32) (uint32, Status, error)
 }
 
 // SwitchSensor ac sensor store
 type SwitchSensor interface {
 	UpdateStatus(sensorID uint32, roomID uint32, status Status) error
-	GetRoomStatus(roomID uint32) (Status, error)
+	GetRoomStatus(roomID uint32) (uint32, Status, error)
 }
