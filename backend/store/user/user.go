@@ -29,12 +29,14 @@ func (dao *Store) GetRewardsPoint(user_id uint32) (uint32, error) {
 }
 
 func (dao *Store) UpdateRewardsPoint(user_id uint32, rewards uint32) error {
-	// Create the SQL query to update rewards points for the given user_id
-	query := "UPDATE user SET rewards = ? WHERE user_id = ?"
-	// Execute the query to update the rewards points
-	_, err := dao.db.Exec(query, rewards, user_id)
+	query := `
+	INSERT INTO user (user_id, rewards) 
+	VALUES (?, ?) 
+	ON DUPLICATE KEY UPDATE rewards = VALUES(rewards)
+	`
+	_, err := dao.db.Exec(query, user_id, rewards)
 	if err != nil {
-			return err
+		return err
 	}
 	return nil
 }
