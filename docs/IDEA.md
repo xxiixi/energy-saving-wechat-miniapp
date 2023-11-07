@@ -26,6 +26,3 @@ Cafeteria self-service reservation system
 2. And connect to the monitoring of the canteen
 3, the camera determines the number of people in line
 4. The card information will be associated with the reservation information, and the total number of reservations will be reduced after the reservation person swipes the card.
-
-#### 5,
-#### 6, 
