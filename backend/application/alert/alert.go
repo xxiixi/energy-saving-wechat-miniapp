@@ -1,6 +1,8 @@
 package alert
 
 import (
+	"encoding/json"
+
 	"EnergySaving/application"
 	"EnergySaving/store"
 )
@@ -10,7 +12,7 @@ type Alerts struct {
 }
 
 func GetAlertList(app *application.App) (string, error) {
-	a, err := app.AlertStore.GetAlertList()
+	a, err := app.AlertsStore.GetAlertList()
 	if err != nil {
 		return "", err
 	}
@@ -20,22 +22,22 @@ func GetAlertList(app *application.App) (string, error) {
 	alerts := &Alerts{
 		Alerts: a,
 	}
-	jsonBytes, err := json.Marshal(alert)
+	jsonBytes, err := json.Marshal(alerts)
 	if err != nil {
-		return err
+		return "", err
 	}
 	return string(jsonBytes), nil
 }
 
 func SolveAlert(app *application.App, alertID uint32,  user uint32, comment string) error {
-	alert, err := app.AlertStore.GetAlert(alertID)
+	a, err := app.AlertsStore.GetAlert(alertID)
 	if err != nil {
 		return err
 	}
-	if alert.status == store.AlertClose {
+	if a.Status == store.AlertClose {
 		return nil
 	}
-	err = app.AlertStore.SolveAlert(alertID, user, comment)
+	err = app.AlertsStore.SolveAlert(alertID, user, comment)
 	if err != nil {
 		return err
 	}
@@ -43,5 +45,5 @@ func SolveAlert(app *application.App, alertID uint32,  user uint32, comment stri
 	if err != nil {
 		return err
 	}
-	return app.UserStore.UpdateRewardsPoint(user, point+alert.Reward)
+	return app.UserStore.UpdateRewardsPoint(user, point+a.Reward)
 }
