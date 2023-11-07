@@ -131,7 +131,7 @@ func alertListHandlerWrapper(app *application.App) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/plain")
 		// Set the sensor status
-		alerts, err = alert.GetAlertList(app)
+		alerts, err := alert.GetAlertList(app)
 		if err == nil {
 			fmt.Fprintf(w, alerts)
 		} else {
@@ -203,9 +203,9 @@ func getRewardsHandlerWrapper(app *application.App) http.HandlerFunc {
 			return
 		}
 		// Set the sensor status
-		point, err = user.GetUserRewardPoint(app, uint32(userID))
+		point, err := user.GetUserRewardPoint(app, uint32(userID))
 		if err == nil {
-			fmt.Fprintf(w, point)
+			fmt.Fprintf(w, strconv.FormatUint(uint64(point), 10))
 		} else {
 			fmt.Fprintf(w, "Error: %v", err)
 		}
