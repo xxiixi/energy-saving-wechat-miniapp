@@ -7,16 +7,8 @@ const (
 	AlertClose AlertStatus = 1
 )
 
-type AlertType int
-
-const (
-	AlertRunningAC  AlertType = 0
-	AlertOpenWindow AlertType = 1
-)
-
 type Alert struct {
 	ID            uint32     `json:"id"`
-	AlertType     AlertType  `json:"alert_type"`
 	RoomID        uint32     `json:"room_id"`
 	ACID          uint32     `json:"ac_id"`
 	WindowID      uint32     `json:"window_id"`
