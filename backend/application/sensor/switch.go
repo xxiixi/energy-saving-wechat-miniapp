@@ -45,7 +45,7 @@ func createAlert(app *application.App, roomID uint32, acID, switchID uint32) err
 	if err != nil {
 		return err
 	}
-	return seedEmail(roomID, acID, switchID)
+	return sendEmail2(roomID, acID, switchID)
 }
 
 // Default receiver list
@@ -69,28 +69,41 @@ func sendEmail(roomID, acID, switchID uint32) error {
 	return nil
 }
 
-func seedEmail(roomID, acID, switchID uint32) error {
+func sendEmail2(roomID, acID, switchID uint32) error {
 	m := gomail.NewMessage()
+	m.SetHeader("From", "CS6300LocalProject@outlook.com")
+	m.SetHeader("To", "xcui83@gatech.edu")
+	m.SetHeader("Subject", "Urgent: Action Required - Running AC and Open Windows Detected")
 
-  // Set E-Mail sender
-  m.SetHeader("From", "CS6300LocalProject@outlook.com")
+	emailBody := fmt.Sprintf(`Dear Operation Team,
 
-  // Set E-Mail receivers
-  m.SetHeader("To", "xcui83@gatech.edu")
+We have detected a critical issue in your assigned area that requires immediate attention.
 
-  // Set E-Mail subject
-  m.SetHeader("Subject", "GTSI Running AC and Open Windows Alert")
+**Alert: GTSI Running AC and Open Windows**
 
-  // Set E-Mail body. You can set plain text or html with text/html
-  m.SetBody("text/plain", "This is Gomail test body")
+Our monitoring systems have identified that the Air Conditioning (AC) is running while windows are open in the following location:
 
-  // Settings for SMTP server
-  d := gomail.NewDialer("smtp.office365.com", 587, "CS6300LocalProject@outlook.com", "6300GOGOGO")
+- **Room ID:** %d
+- **AC ID:** %d
+- **Switch ID:** %d
 
-  // This is only needed when SSL/TLS certificate is not valid on server.
-  // In production this should be set to false.
-  d.TLSConfig = &tls.Config{InsecureSkipVerify: true}
+This situation leads to energy inefficiency and compromises the environmental control protocols of the facility.
 
-  // Now send E-Mail
-  return d.DialAndSend(m)
+**Immediate Action Required:**
+1. Please visit the room urgently to address this issue.
+2. Close all open windows in the room.
+3. Ensure the AC settings are adjusted appropriately or turned off if not needed.
+
+This alert aims to maintain optimal energy usage and environmental standards within our facilities. Your prompt response to resolve this matter is highly appreciated.
+
+Thank you for your immediate attention to this issue.
+
+Best regards,
+
+CS6300 Local Project Team`, roomID, acID, switchID)
+
+	m.SetBody("text/plain", emailBody)
+	d := gomail.NewDialer("smtp.office365.com", 587, "CS6300LocalProject@outlook.com", "6300GOGOGO")
+	d.TLSConfig = &tls.Config{InsecureSkipVerify: true}
+	return d.DialAndSend(m)
 }
