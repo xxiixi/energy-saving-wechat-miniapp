@@ -2,7 +2,6 @@ package sensor
 
 import (
 	"fmt"
-	"net/smtp"
 	"crypto/tls"
 
   gomail "gopkg.in/mail.v2"
