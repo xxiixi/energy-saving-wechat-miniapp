@@ -25,7 +25,7 @@ func checkAC(app *application.App, roomID uint32, switchID uint32) error {
 		return err
 	}
 	if int(status) == int(store.StatusOpen) {
-		return  createAlert(app, store., roomID, acID, switchID)
+		return  createAlert(app, roomID, acID, switchID)
 	}
 	return nil
 }
@@ -35,14 +35,14 @@ func createAlert(app *application.App, roomID uint32, acID, switchID uint32) err
 		RoomID        :roomID,
 		ACID          :acID,
 		WindowID      :switchID,
-		Status        :store.AlertStatus,
+		Status        :store.AlertOpen,
 		Reward        :100,
 	}
 	err:= app.AlertsStore.Add(a)
 	if err != nil {
 		return err
 	}
-	return sendEmail()
+	return sendEmail(roomID, acID, switchID)
 }
 
 // Default receiver list

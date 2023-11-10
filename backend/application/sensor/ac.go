@@ -21,7 +21,7 @@ func checkSwitch(app *application.App, roomID uint32, switchID uint32) error {
 		return err
 	}
 	if int(status) == int(store.StatusOpen) {
-		return  createAlert(app, store., roomID, acID, switchID)
+		return  createAlert(app, roomID, acID, switchID)
 	}
 	return nil
 }
