@@ -30,7 +30,7 @@ func (dao *Store) GetAlertList() ([]*store.Alert, error) {
 	// Create a slice to store the retrieved alert records
 	alerts := []*store.Alert{}
 	// Create the SQL query to select alert records from the database
-	query := "SELECT id, room_number, status, solver, ac_id, window_id, reward, solver_comment, type FROM alert"
+	query := "SELECT id, room_number, status, solver, ac_id, window_id, reward, solver_comment FROM alert"
 	// Execute the query
 	rows, err := dao.db.Query(query)
 	if err != nil {
@@ -40,7 +40,7 @@ func (dao *Store) GetAlertList() ([]*store.Alert, error) {
 	// Iterate over the result rows and populate the alerts slice
 	for rows.Next() {
 			var alert store.Alert
-			err := rows.Scan(&alert.ID, &alert.RoomID, &alert.Status, &alert.Solver, &alert.ACID, &alert.WindowID, &alert.Reward, &alert.SolverComment, &alert.AlertType)
+			err := rows.Scan(&alert.ID, &alert.RoomID, &alert.Status, &alert.Solver, &alert.ACID, &alert.WindowID, &alert.Reward, &alert.SolverComment)
 			if err != nil {
 					return nil, err
 			}
@@ -64,9 +64,9 @@ func (dao *Store) GetAlert(id uint32) (*store.Alert, error) {
 	// Create a variable to store the retrieved alert
 	var alert store.Alert
 	// Create the SQL query to select an alert by its ID
-	query := "SELECT id, room_number, status, solver, ac_id, window_id, reward, solver_comment, type FROM alert WHERE id = ?"
+	query := "SELECT id, room_number, status, solver, ac_id, window_id, reward, solver_comment FROM alert WHERE id = ?"
 	// Execute the query and scan the result into the alert variable
-	err := dao.db.QueryRow(query, id).Scan(&alert.ID, &alert.RoomID, &alert.Status, &alert.Solver, &alert.ACID, &alert.WindowID, &alert.Reward, &alert.SolverComment, &alert.AlertType)
+	err := dao.db.QueryRow(query, id).Scan(&alert.ID, &alert.RoomID, &alert.Status, &alert.Solver, &alert.ACID, &alert.WindowID, &alert.Reward, &alert.SolverComment)
 	if err != nil {
 		if err == sql.ErrNoRows {
 			// If no rows were found, return nil and a custom error to indicate that the alert was not found
