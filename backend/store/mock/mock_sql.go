@@ -2,7 +2,7 @@
 // Source: database/sql/driver (interfaces: Conn,Driver)
 
 // Package mock_driver is a generated GoMock package.
-package mock_driver
+package mock
 
 import (
 	driver "database/sql/driver"
