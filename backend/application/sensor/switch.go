@@ -79,13 +79,13 @@ func sendEmail2(roomID, acID, switchID uint32) error {
 
 We have detected a critical issue in your assigned area that requires immediate attention.
 
-**Alert: GTSI Running AC and Open Windows**
+Alert: GTSI Running AC and Open Windows
 
 Our monitoring systems have identified that the Air Conditioning (AC) is running while windows are open in the following location:
 
-- **Room ID:** %d
-- **AC ID:** %d
-- **Switch ID:** %d
+- Room ID: %d
+- AC ID: %d
+- Switch ID: %d
 
 This situation leads to energy inefficiency and compromises the environmental control protocols of the facility.
 
