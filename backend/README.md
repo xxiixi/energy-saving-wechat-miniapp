@@ -63,3 +63,7 @@ These endpoints are used for accessing and managing user rewards.
 ## Getting Started
 
 To begin using the Energy Saving HTTP API, ensure that your HTTP requests are directed to the correct endpoint URLs and include the necessary headers and parameters as outlined in this documentation.
+
+## Build Method
+Be sure to install the latest version of Golang and run  
+`go build`
