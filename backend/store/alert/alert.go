@@ -17,7 +17,7 @@ func NewAlertDAO(db *sql.DB) *Store {
 
 func (dao *Store) Add(alert *store.Alert) error {
 	// Create the SQL query to insert a new alert into the database
-	query := "INSERT INTO alert (room_number, status, solver, ac_id, window_id, reward, solver_comment) VALUES (?, ?, ?, ?, ?)"
+	query := "INSERT INTO alert (room_number, status, ac_id, window_id, reward) VALUES (?, ?, ?, ?, ?)"
 	// Execute the query
 	_, err := dao.db.Exec(query, alert.RoomID, alert.Status, alert.ACID, alert.WindowID, alert.Reward)
 	if err != nil {
