@@ -89,7 +89,7 @@ Our monitoring systems have identified that the Air Conditioning (AC) is running
 
 This situation leads to energy inefficiency and compromises the environmental control protocols of the facility.
 
-**Immediate Action Required:**
+Immediate Action Required:
 1. Please visit the room urgently to address this issue.
 2. Close all open windows in the room.
 3. Ensure the AC settings are adjusted appropriately or turned off if not needed.
