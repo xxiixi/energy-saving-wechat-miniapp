@@ -11,8 +11,9 @@ func SetACSensorStatus(app *application.App, sensorID uint32, roomID uint32, s S
 		return err
 	}
 	if s == StatusOpen {
-		_ = checkSwitch(app, roomID, sensorID)
+		return checkSwitch(app, roomID, sensorID)
 	}
+	return nil
 }
 
 func checkSwitch(app *application.App, roomID uint32, switchID uint32) error {
