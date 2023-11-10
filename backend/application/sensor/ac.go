@@ -11,12 +11,12 @@ func SetACSensorStatus(app *application.App, sensorID uint32, roomID uint32, s S
 		return err
 	}
 	if s == StatusOpen {
-		return checkSwitch(app, roomID, sensorID)
+		return checkRoomSwitchStatus(app, roomID, sensorID)
 	}
 	return nil
 }
 
-func checkSwitch(app *application.App, roomID uint32, switchID uint32) error {
+func checkRoomSwitchStatus(app *application.App, roomID uint32, switchID uint32) error {
 	acID, status, err := app.SwitchSensorStore.GetRoomStatus(roomID)
 	if err != nil {
 		return err

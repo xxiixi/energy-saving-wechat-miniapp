@@ -26,7 +26,6 @@ func addHandlers(app *application.App) {
 func setSwitchStatusHandlerWrapper(app *application.App) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/plain")
-
 		// Read the request body
 		bodyBytes, err := ioutil.ReadAll(r.Body)
 		if err != nil {
@@ -34,7 +33,6 @@ func setSwitchStatusHandlerWrapper(app *application.App) http.HandlerFunc {
 			return
 		}
 		defer r.Body.Close()
-
 		// Parse the body content
 		values, err := url.ParseQuery(string(bodyBytes))
 		if err != nil {
@@ -78,7 +76,6 @@ func setSwitchStatusHandlerWrapper(app *application.App) http.HandlerFunc {
 func setACStatusHandlerWrapper(app *application.App) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "text/plain")
-
 		// Read the request body
 		bodyBytes, err := ioutil.ReadAll(r.Body)
 		if err != nil {
@@ -86,7 +83,6 @@ func setACStatusHandlerWrapper(app *application.App) http.HandlerFunc {
 			return
 		}
 		defer r.Body.Close()
-
 		// Parse the body content
 		values, err := url.ParseQuery(string(bodyBytes))
 		if err != nil {

@@ -1,8 +1,9 @@
 package switchsensor
 
 import (
-	"EnergySaving/store"
 	"database/sql"
+
+	"EnergySaving/store"
 )
 
 type Store struct {
