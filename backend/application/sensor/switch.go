@@ -92,8 +92,5 @@ func seedEmail(roomID, acID, switchID uint32) error {
   d.TLSConfig = &tls.Config{InsecureSkipVerify: true}
 
   // Now send E-Mail
-  if err := d.DialAndSend(m); err != nil {
-    fmt.Println(err)
-    panic(err)
-  }
+  return d.DialAndSend(m)
 }
