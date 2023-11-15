@@ -1,0 +1,19 @@
+/* pages/borrowRecords/index.wxss */
+.record-returned {
+    color: rgb(58, 223, 58);
+}
+
+.record-borrowing {
+    color: rgb(33, 184, 253);
+}
+
+.record-options {
+    display: flex;
+    flex-direction: row;
+}
+
+.return-renew-pop {
+    display: flex;
+    justify-content: center;
+    background-color: aqua;
+}

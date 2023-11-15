@@ -1,0 +1,7 @@
+/* pages/careerPost/index.wxss */
+.body{
+    margin-bottom: 40px;
+}
+.buttonG{
+    z-index:9999;
+}

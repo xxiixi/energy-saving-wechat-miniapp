@@ -1,0 +1,12 @@
+/* pages/careerRegStudents/index.wxss */
+.studentsRecords{
+    width:80%;
+    margin:auto;
+}
+.top{
+    margin-top:20px;
+}
+
+.van-cell__value{
+    color:#323233 !important;
+}

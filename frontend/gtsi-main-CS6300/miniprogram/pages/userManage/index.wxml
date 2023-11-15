@@ -1,0 +1,25 @@
+<van-notice-bar color="#1989fa" background="#ecf9ff" left-icon="volume-o" text="Only the users you added into the system can login and use this miniapp" wrapable scrollable="{{ false }}" />
+
+<view style="margin: 8px;">
+    <van-cell-group inset>
+        <van-field model:value="{{ gtid }}" placeholder="Please input GTID" />
+    </van-cell-group>
+    <view style="margin: 16px;"></view>
+    <van-cell-group inset>
+        <van-field model:value="{{ password }}" placeholder="Please input student's password" />
+    </van-cell-group>
+    <view style="margin: 16px;">
+        <van-button type="primary" round block bindtap="addUser" data-role='student'>Add Student</van-button>
+    </view>
+
+    <van-divider />
+
+    <van-cell-group inset>
+        <van-field model:value="{{ email }}" placeholder="Please input email" />
+    </van-cell-group>
+    <view style="margin: 16px;">
+        <van-button type="info" round block bindtap="addUser" data-role='faculty'>Add Faulty / Staff</van-button>
+    </view>
+</view>
+
+<van-toast id="van-toast" />

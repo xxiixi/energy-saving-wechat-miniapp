@@ -1,0 +1,4 @@
+/* pages/addBook/index.wxss */
+.value-class {
+    flex: none !important;
+}

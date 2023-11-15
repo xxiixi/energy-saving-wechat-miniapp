@@ -1,0 +1,77 @@
+<!--pages/careerPost/index.wxml-->
+<view class="body">
+<van-cell title="Choose card type" arrow-direction="down" is-link/>
+<van-radio-group value="{{ radio }}" bind:change="onChange">
+  <van-cell-group>
+    <van-cell title="Activity" clickable data-name="activity" bind:click="onClick">
+      <van-radio slot="right-icon" name="activity" />
+    </van-cell>
+    <van-cell title="Career" clickable data-name="career" bind:click="onClick">
+      <van-radio slot="right-icon" name="career" />
+    </van-cell>
+  </van-cell-group>
+</van-radio-group>
+<van-cell-group>
+  <van-field
+    label="Title"
+    placeholder="please input title"
+    border="{{ false }}"
+    model:value="{{ title }}" 
+  />
+</van-cell-group>
+
+<van-cell-group>
+  <van-field
+    label="Description"
+    type="textarea"
+    placeholder="please input description"
+    autosize
+    model:value="{{description }}" 
+    border="{{ false }}"
+  />
+  <van-field
+    wx:if="{{type=='activity'}}"
+    label="Location"
+    placeholder="please input location"
+    border="{{false}}"
+    model:value="{{actArea}}" 
+  />
+</van-cell-group>
+<van-cell title="Choose card tag" arrow-direction="down" is-link/>
+<van-cell-group>
+    <!-- <van-cell title="Hurry" clickable data-name="1">
+      <van-switch slot="right-icon" checked="{{ isHurry }}" bind:change="onChangeHurry" active-color="#ee0a24" />
+    </van-cell> -->
+    <van-cell title="Top" clickable data-name="2">
+      <van-switch slot="right-icon" checked="{{ isTop }}" bind:change="onChangeTop"  active-color="#022b4d"/>
+    </van-cell>
+</van-cell-group>
+<van-cell title="Choose DDL" value="{{ date }}" bind:click="onDisplay" arrow-direction="left" is-link/>
+<van-calendar show="{{ show }}" bind:close="onClose" bind:confirm="onConfirm" />
+
+
+<van-cell title="Choose activity type" wx:if="{{type=='activity'}}"/>
+<van-radio-group value="{{ radioActType}}" bind:change="onChange2" wx:if="{{type=='activity'}}">
+  <van-cell-group>
+    <van-cell title="Campus" clickable data-name="campus" bind:click="onClick2">
+      <van-radio slot="right-icon" name="campus" />
+    </van-cell>
+    <van-cell title="Academic" clickable data-name="academic" bind:click="onClick2">
+      <van-radio slot="right-icon" name="academic" />
+    </van-cell>
+    <van-cell title="Applying" clickable data-name="applying" bind:click="onClick2">
+      <van-radio slot="right-icon" name="applying" />
+    </van-cell>
+  </van-cell-group>
+</van-radio-group>
+
+
+
+<van-goods-action class="buttonG">
+  <van-goods-action-button color="#b3a369" text="Publish" type="warning" bindtap="publish" />
+</van-goods-action>
+
+
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />
+</view>

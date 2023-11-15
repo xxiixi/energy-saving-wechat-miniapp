@@ -1,0 +1,20 @@
+/* pages/library/index.wxss */
+.libraryBody {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.functionBar {
+    position: fixed;
+    z-index: 100
+}
+
+.van-cell-text {
+    /* width: 20; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* -webkit-box-orient:vertical; */
+    /* white-space:nowrap; */
+}

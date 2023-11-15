@@ -1,0 +1,11 @@
+<!--pages/bookTag/index.wxml-->
+<van-cell-group wx:for="{{ bookList }}" wx:for-item="book" wx:key='_id'>
+    <van-cell label="author: {{ book.author }}" url="/pages/book/index?bookID={{book._id}}">
+        <view slot="title" class="title">
+            <view class="van-cell-text">{{ book.title }}</view>
+            <view style="width: 8px;"></view>
+            <van-tag plain type="primary">Shelf {{ book.code[0] }}</van-tag>
+            <van-tag type="success" style="margin-left: 5px;">{{ book.status }}</van-tag>
+        </view>
+    </van-cell>
+</van-cell-group>

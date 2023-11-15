@@ -1,0 +1,13 @@
+<view class="title">GTSI</view>
+
+<van-grid clickable column-num="2" gutter="{{ 10 }}">
+  <van-grid-item icon="idcard" icon-color="plum" link-type="navigateTo" url="/pages/seat/index" text="Seat Reservation" />
+  <van-grid-item icon="notes-o" icon-color="skyblue" link-type="navigateTo" url="/pages/library/index" text="Library" />
+
+  <!-- <van-grid-item icon="bullhorn-o" icon-color="skyblue" link-type="navigateTo" url="/pages/career/index" text="Career Services" /> -->
+
+  <van-grid-item icon="apps-o" icon-color="turquoise" link-type="navigateTo" url="/pages/energySaving/index" text="Energy Saving" />
+  <van-grid-item icon="bullhorn-o" icon-color="darkorange" link-type="navigateTo" url="" text="Project Proposal" />
+  <van-grid-item icon="more-o" icon-color="darkseagreen" link-type="navigateTo" url="" text="More coming soon..." />
+  
+</van-grid>

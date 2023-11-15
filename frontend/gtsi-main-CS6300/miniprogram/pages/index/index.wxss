@@ -1,0 +1,8 @@
+/* pages/index/index.wxss */
+.title {
+  font-size: 36px;
+  display: flex;
+  justify-content: center;
+  margin: 16px;
+  color: #C59353;
+}

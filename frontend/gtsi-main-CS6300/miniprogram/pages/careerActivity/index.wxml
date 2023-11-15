@@ -1,0 +1,18 @@
+<!--pages/careerActivity/index.wxml-->
+<van-tabs active="{{ activeKey }}" bind:change="onChange" color="#b3a369">
+  <van-tab title="Current Activities"></van-tab>
+  <van-tab title="Applying"></van-tab>
+</van-tabs>
+
+
+<van-cell-group wx:for="{{ recommendList }}" wx:for-item="item" wx:key='index'>
+    <van-cell label="activity date: {{ item.targetDate }}" url="/pages/careerActivityDetail/index?id={{item._id}}">
+        <view slot="title" class="title">
+            <view class="van-cell-text gtsi-cell-title">{{ item.title }}</view>
+            <van-tag type="warning">{{item.type}}</van-tag>
+            <view class="gtsi-cell-origin-outside">poster: <span class="gtsi-cell-origin">{{ item.origin }}</span></view>
+        </view>
+    </van-cell>
+</van-cell-group>
+
+<van-notify id="van-notify" />

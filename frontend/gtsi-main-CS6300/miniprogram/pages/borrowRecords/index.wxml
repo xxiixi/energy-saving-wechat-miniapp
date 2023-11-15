@@ -1,0 +1,27 @@
+<van-notice-bar mode="link" left-icon="user-circle-o" background="#ecf9ff" color="#1989fa" text="Logout your account" bind:click="logout" />
+<van-notice-bar wx:if="{{ user.role === 'admin'}}" mode="link" left-icon="orders-o" text="View all borrowed books (admin only)" bind:click="viewAllBorrowedRecords" />
+
+<van-empty wx:if="{{records.length == 0}}" description="You have not borrowed any books yet, go grab one!" />
+
+<van-cell-group wx:for="{{ records }}" wx:for-item="record" wx:key='index'>
+    <van-cell title="{{ record.title }}" border="{{ false }}" use-label-slot>
+        <view slot="label">
+            <view>
+                {{ 'Due: '+ record.dueDate }}
+
+                <van-tag type="primary" wx:if="{{record.status == 'borrowing'}}">{{record.status}}</van-tag>
+                <van-tag type="danger" wx:if="{{record.status == 'overdue'}}">{{record.status}}</van-tag>
+                <van-tag color="#f2826a" wx:if="{{record.isRenewed}}" style="padding-left: 8px;">renewed</van-tag>
+            </view>
+
+            <view style="margin-top:4px">
+                <van-button plain type="primary" round size="mini" bindtap="handleReturn" data-bookID='{{ record.bookID }}'>Return</van-button>
+                <van-button plain type="info" round size="mini" style="margin-left:4px" bindtap="handleRenew" data-bookID='{{ record.bookID }}' disabled="{{ record.isRenewed }}">Renew</van-button>
+            </view>
+        </view>
+    </van-cell>
+</van-cell-group>
+
+<van-notify id="van-notify" />
+<van-dialog id="van-dialog" />
+<van-toast id="van-toast" />

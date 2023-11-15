@@ -1,0 +1,23 @@
+<!--pages/careerSearch/index.wxml-->
+<van-search value="{{ searchValue }}" placeholder="Please input keywords here" bind:search="onSearch"/>
+<van-dropdown-menu>
+  <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" />
+  <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" />
+</van-dropdown-menu>
+<view wx:if="{{recommendList.length==0}}">
+    <van-empty description="Not Found">
+    </van-empty>
+</view>
+<van-cell-group wx:for="{{ recommendList }}" wx:for-item="item" wx:key='index'>
+    <van-cell label="publish date: {{ item.publishDate }}" url="/pages/careerJobDetail/index?id={{item._id}}">
+        <view slot="title" class="title">
+            <view class="van-cell-text gtsi-cell-title">{{ item.title }}</view>
+            <view class="gtsi-cell-salary">{{ item.salary }}</view>
+            <van-tag plain type="primary"   wx:if="{{ item.type === 'career'}}">{{item.type}}</van-tag>
+            <van-tag plain color="#b3a369" style="margin-left: 5px;" wx:if="{{ item.type === 'internal'}}">{{item.type}}</van-tag>
+            <van-tag type="danger" style="margin-left: 5px;" wx:if="{{ item.isHurry == true}}">hurry</van-tag>
+            
+            <view class="gtsi-cell-origin-outside">company: <span class="gtsi-cell-origin">{{ item.origin }}</span></view>
+        </view>
+    </van-cell>
+</van-cell-group>

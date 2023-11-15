@@ -1,0 +1,31 @@
+<!--pages/careerJobDetail/index.wxml-->
+<!--pages/careerActivityDetail/index.wxml-->
+
+<view class="body">
+    <view class="detail-box">
+        <h1 class="gtsi-color-navy">{{card.title}}</h1>
+        <view>
+            <van-tag type="primary" >Career</van-tag>
+            <van-tag type="danger" style="margin-left:5px" wx:if="{{card.isHurry==true}}">Hurry</van-tag>
+        </view>
+    </view>
+    <view class="description">
+        <view style="font-size:14px;">Description:</view>
+        <text style="font-size:14px;">{{card.description}}</text>
+    </view>
+    <van-cell-group>
+        <van-cell title="Salary" value="{{card.salary}}"  />
+        <van-cell title="Company Name" value="{{card.origin}}" />
+        <van-cell title="Publish Date" value="{{card.publishDate}}"  />
+        <van-cell title="DDL" value="{{card.targetDate}}"  />
+    </van-cell-group>
+</view>
+
+<van-goods-action>
+  <van-goods-action-button color="#b3a369" text="Follow" type="warning" wx:if="{{isFollow==false}}" bind:click="apply"/>
+  <van-goods-action-button color="#b3a369" text="Cancel Followed" type="warning" bind:click="cancel" wx:else />
+</van-goods-action>
+
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />
+

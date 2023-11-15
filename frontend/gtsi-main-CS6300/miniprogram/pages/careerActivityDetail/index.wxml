@@ -1,0 +1,32 @@
+<!--pages/careerActivityDetail/index.wxml-->
+
+<view>
+    <van-notice-bar  wx:if="{{role=='admin'}}" mode="link" background="#ecf9ff" color="#1989fa" text="click to see who registered this" bind:click="jumpToRegList" />
+    <van-notice-bar  wx:if="{{role=='admin'}}" mode="link" type="alert" text="click to delete" bind:click="deleteCard" />
+    <view class="detail-box">
+        <h1 class="gtsi-color-navy">{{card.title}}</h1>
+        <view>
+            <van-tag type="primary" >Career Service</van-tag>
+            <van-tag type="warning" style="margin-left:5px">Activity</van-tag>
+        </view>
+    </view>
+    <view class="description">
+        <view style="font-size:14px;">Description:</view>
+        <text style="font-size:14px;">{{card.description}}</text>
+    </view>
+    <van-cell-group>
+        <van-cell title="Activtiy Date" value="{{card.targetDate}}" />
+        <van-cell title="Activtiy Area" value="{{card.actArea}}" />
+        <van-cell title="Publish Date" value="{{card.publishDate}}" />
+        <van-cell title="Publisher" value="{{card.origin}}"  />
+        <van-cell title="Status" value="Registered" wx:if="{{isRegisted}}" />
+    </van-cell-group>
+</view>
+
+<van-goods-action>
+  <van-goods-action-button color="#b3a369" text="Register" type="warning" bind:click="apply" clickable wx:if="{{isRegisted==false}}"/>
+  <van-goods-action-button color="#b3a369" text="Cancel Registration" type="warning" bind:click="cancel" clickable wx:if="{{isRegisted==true}}"/>
+</van-goods-action>
+
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />

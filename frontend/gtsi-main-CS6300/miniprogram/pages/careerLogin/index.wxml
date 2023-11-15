@@ -1,0 +1,21 @@
+<!--pages/login/index.wxml-->
+<view style="margin: 16px; display: flex; flex-direction: column;">
+    <text style="font-size: 18px; align-self: center; margin-bottom: 16px;">Please Login Before Use</text>
+    
+    <van-tabs active="{{ role }}" id="tabs" bind:change="changeRole" color="#b3a369">
+        <van-tab title="Student" name="student">
+            <van-field model:value="{{ gtid }}" placeholder="Please input your GTID" border="{{ false }}" />
+            <van-field model:value="{{ password}}" type="password" placeholder="Please input your password" border="{{ false }}" />
+        </van-tab>
+        <van-tab title="Admin" name="admin">
+            <van-field model:value="{{ email }}" placeholder="Please input your Email" border="{{ false }}" />
+            <van-field model:value="{{ password}}" type="password" placeholder="Please input your password" border="{{ false }}" />
+        </van-tab>
+    </van-tabs>
+
+    <view style="margin-top: 16px;">
+        <van-button block round color="#b3a369" type="info" bind:click="login">Login</van-button>
+    </view>
+</view>
+
+<van-toast id="van-toast" />

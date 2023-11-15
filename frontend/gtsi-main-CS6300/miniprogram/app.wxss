@@ -1,0 +1,56 @@
+/**app.wxss**/
+/*GTSI yellow #b3a369*/
+/*GTSI navyblue #022b4d*/
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+} 
+
+button {
+  background: initial;
+}
+
+button:focus{
+  outline: 0;
+}
+
+button::after{
+  border: none;
+}
+
+
+page {
+  background: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.gtsi-cell-title{
+    font-size:20px;
+    font-weight:600;
+    color:#022b4d;
+}
+.gtsi-cell-salary{
+    font-size:16px;
+    font-weight:600;
+    color:#022b4d;
+}
+.gtsi-cell-origin-outside{
+    font-size:12px;
+    color:#666;
+}
+.gtsi-cell-description{
+
+}
+.gtsi-cell-origin{
+    font-weight:600;
+    font-size:14px;
+    color:black;
+}
+
+.gtsi-color-navy{
+    color:#022b4d;
+}

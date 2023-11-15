@@ -1,0 +1,43 @@
+<!--pages/book/index.wxml-->
+<view style="display: flex; flex-direction: column; margin-top: 16px;">
+    <van-cell-group inset>
+        <van-cell title="{{book.title}}" title-class="title" />
+        <van-cell title="Code" value="{{book.code}}" />
+        <van-cell title="Edition" value="{{book.edition}}" />
+        <van-cell title="ISBN" value="{{book.isbn}}" />
+        <van-cell title="Author" value="{{book.author}}" />
+        <van-cell title="Shelf" value="Shelf {{book.code[0]}}" />
+        <van-cell title="Status" value="{{book.status !== '' ? 'borrowed' : 'available' }}" value-class="status" />
+        <van-cell wx:for="{{ book.tags }}" wx:for-item="tag" wx:key='index' is-link use-title-slot url="/pages/bookTag/index?tag={{tag}}">
+            <view slot="title">
+                <van-tag type='primary'>{{tag}}</van-tag>
+            </view>
+        </van-cell>
+    </van-cell-group>
+
+    <van-goods-action>
+        <van-goods-action-icon icon="home-o" text="Home" bindtap="clickHome" />
+        <van-goods-action-icon wx:if="{{user.role === 'admin'}}" icon="points" text="Copy" bindtap="copyBook" />
+        <van-goods-action-icon wx:if="{{user.role === 'admin'}}" icon="edit" text="Edit" bindtap="editBook" />
+        <van-goods-action-icon wx:if="{{user.role === 'admin'}}" icon="contact" text="Borrow For" bindtap="borrowForOther" />
+        <van-goods-action-button color="#7fd6ff" text="Share" type="warning" bind:click="shareBook" />
+        <van-goods-action-button disabled="{{book.status !== ''}}" color="#1A89FA" text="Borrow" bind:click="borrowBook" />
+    </van-goods-action>
+
+    <van-dialog id="van-dialog" />
+
+    <van-toast id="van-toast" />
+    <van-notify id="van-notify" />
+
+    <van-action-sheet show="{{ borrowForOther }}" bind:close="closeBorrowForOther" title="Borrow For Others" description="Only input GTID or email. Do not input both.">
+        <view style="height: 200px;margin: 8px;">
+            <van-field label="For Student" model:value="{{ gtid }}" placeholder="GTID" border="{{ false }}" />
+
+            <van-field label="For Staff" model:value="{{ email }}" placeholder="Email" border="{{ false }}" />
+            <view style="height: 8px;"></view>
+            <van-button type="primary" round block bindtap="handleBorrowForOther">Borrow</van-button>
+        </view>
+    </van-action-sheet>
+
+    <van-share-sheet show="{{ showShare }}" title="立即分享给好友" options="{{ shareOptions }}" bind:select="selectShare" bind:close="closeShare" />
+</view>

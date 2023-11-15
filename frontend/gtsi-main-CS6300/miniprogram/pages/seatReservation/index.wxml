@@ -1,0 +1,11 @@
+
+<view style="margin-top: 8px;"></view>
+
+<van-cell-group inset>
+    <van-cell wx:for="{{ bookedSeat }}" wx:for-item="seat"  wx:key="index" title="{{ seat.location + ' 号自习室 ' + seat.number + ' 号' }}" value="取消" is-link label="{{ seat.start + ' ~ ' + seat.end }}" bindtap="cancelReservation" data-seat="{{seat}}" />
+</van-cell-group>
+
+<van-empty wx:if="{{ bookedSeat.length === 0 }}" description="暂时没有预约座位" />
+
+<van-dialog id="van-dialog" />
+<van-toast id="van-toast" />

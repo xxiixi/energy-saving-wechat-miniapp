@@ -1,0 +1,4 @@
+/* pages/editBook/index.wxss */
+.value-class {
+    flex: none !important;
+}

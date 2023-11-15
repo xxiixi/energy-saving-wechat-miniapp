@@ -1,0 +1,36 @@
+<!--pages/careerUserPage/index.wxml-->
+<van-notice-bar  wx:if="{{isLogin==true}}" mode="link" background="#ecf9ff" color="#1989fa" text="click to set or edit your name" bind:click="setName" />
+<view wx:if="{{isLogin==true}}">
+    <van-cell-group>
+        <van-cell title="GT ID" value="{{gtid}}" wx:if="{{role=='student'}}" />
+        <van-cell title="email" value="{{email}}" wx:if="{{role=='admin'}}" />
+        <van-cell wx:if="{{name!=null}}" title="Name" value="{{name}}" />
+        <van-cell title="Role" value="{{role}}" />
+    </van-cell-group>
+    <van-grid column-num="4" clickable wx:if="{{role=='admin'}}">
+        <van-grid-item icon="star-o" icon-color="#b3a369" text="Followed" url="/pages/careerSearch/index" />
+        <van-grid-item icon="wap-home-o" icon-color="#b3a369" text="MainPage"  url="/pages/career/index" />
+        <van-grid-item icon="todo-list-o" icon-color="#b3a369" text="Logout" bind:click="logout" />
+        <van-grid-item icon="orders-o" icon-color="#b3a369" text="Post"  url="/pages/careerPost/index"/>
+    </van-grid>
+    <van-grid column-num="3" clickable wx:if="{{role=='student'}}">
+        <van-grid-item icon="star-o" icon-color="#b3a369" text="Card Record" url="/pages/careerUserReg/index" />
+        <van-grid-item icon="wap-home-o" icon-color="#b3a369" text="MainPage" url="/pages/career/index" />
+        <van-grid-item icon="todo-list-o" icon-color="#b3a369" text="Logout" bind:click="logout" />
+    </van-grid>
+
+</view>
+<view wx:if="{{isLogin==false}}">
+    <van-empty description="You have not login yet">
+        <van-button round  class="bottom-button" color="#b3a369" url="/pages/careerLogin/index" bindtap="test">Login</van-button>
+    </van-empty>
+</view>
+
+<van-dialog
+  use-slot
+  show="{{ show }}"
+  id="van-dialog"
+>
+<van-field model:value="{{ nameTemp}}" placeholder="Please input your name" border="{{ false }}" />
+</van-dialog>
+<van-toast id="van-toast" />

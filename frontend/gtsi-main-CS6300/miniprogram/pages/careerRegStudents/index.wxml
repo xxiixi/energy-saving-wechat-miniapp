@@ -1,0 +1,14 @@
+<!--pages/careerRegStudents/index.wxml-->
+<van-cell title="Check students who registered" size="large" />
+<van-cell title="number of registers" value="{{studentList.length}}" size="large" />
+
+<van-empty image="search" description="There are no registered students" wx:if="{{ hasContent==false}}" />
+
+<view class="studentsRecords top"  wx:if="{{ hasContent==true }}">
+    <van-cell title="GTID" value="Name" size="small" />
+</view>
+<view class="studentsRecords" wx:for="{{ studentList }}" wx:for-item="item" wx:key='index'>
+    <van-cell title="{{item.gtid}}" value="{{item.name}}" size="small" value-class="{color:black}" />
+</view>
+
+

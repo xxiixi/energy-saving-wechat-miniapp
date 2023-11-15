@@ -1,0 +1,16 @@
+/* pages/bookRequest/index.wxss */
+.eachAffiliation {
+    margin: 5px;
+}
+
+.Affiliation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.purchaseBody {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

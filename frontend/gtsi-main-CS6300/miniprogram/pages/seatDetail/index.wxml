@@ -1,0 +1,22 @@
+<view style="height: 8px;"></view>
+
+<van-cell-group inset>
+    <van-cell title="{{ seatInfo.location + ' 号自习室第 ' + seatInfo.number + ' 号座位'  }}" label="这是长期类型的座位。一次可以预约 1 周，时段固定为周一到周日；每个月最多可预约 1 周，次数用完之后之后无法继续选择预约" size="large" />
+</van-cell-group>
+
+<view style="height: 8px;"></view>
+
+
+<van-cell-group inset>
+    <van-cell wx:for="{{dates}}" wx:key="index" wx:for-item="date" title="{{ date.start + ' ~ ' + date.end }}" is-link="{{ date.status === 1 }}" bindtap="{{ date.status === 1 ? 'bookSeat' : null }}" data-value="{{date.value}}" use-label-slot>
+        <view slot="label">
+            <van-tag wx:if="{{date.status === 1}}" type="success">可预约</van-tag>
+            <van-tag wx:else>不可预约</van-tag>
+        </view>
+    </van-cell>
+</van-cell-group>
+
+<view style="height: 8px;"></view>
+
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />

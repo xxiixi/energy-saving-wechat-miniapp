@@ -1,0 +1,42 @@
+<view>
+    <van-search value="{{ searchValue }}" placeholder="Enter title/author/bookcode to search" bind:search="onSearch" />
+
+    <van-grid column-num="2" clickable>
+        <van-grid-item icon="/images/records.png" text="Borrow Records" url="/pages/borrowRecords/index" />
+        <van-grid-item icon="/images/request.png" text="Book Request" url="/pages/bookRequest/index" />
+    </van-grid>
+
+    <view wx:if="{{user.role === 'admin'}}">
+        <van-grid column-num="2" clickable>
+            <van-grid-item icon="/images/add.png" text="Add Books" url="/pages/addBook/index" />
+            <van-grid-item icon="/images/user.png" text="User Manage" url="/pages/userManage/index" />
+        </van-grid>
+    </view>
+
+    <van-sticky>
+        <van-dropdown-menu>
+            <van-dropdown-item value="{{ bookType }}" options="{{ bookTypes }}" bind:change='selectType' />
+            <van-dropdown-item value="{{ bookTag }}" options="{{ bookTags }}" bind:change='selectTag' />
+        </van-dropdown-menu>
+    </van-sticky>
+
+    <van-empty wx:if="{{bookList.length === 0 && !hasMore}}" description="No Related Results" />
+
+    <van-cell-group wx:for="{{ bookList }}" wx:for-item="book" wx:key='index'>
+        <van-cell label="author: {{ book.author }}" url="/pages/book/index?bookID={{book._id}}">
+            <view slot="title" class="title">
+                <view class="van-cell-text">{{ book.title }}</view>
+                <view style="width: 8px;"></view>
+                <van-tag plain type="primary">Shelf {{ book.code[0] }}</van-tag>
+                <van-tag color="#7232dd" style="margin-left: 5px">{{ book.code }}</van-tag>
+                <van-tag type="success" wx:if="{{ book.status === ''}}" style="margin-left: 5px;">available</van-tag>
+                <van-tag type="warning" wx:else style="margin-left: 5px;">borrowed</van-tag>
+            </view>
+        </van-cell>
+    </van-cell-group>
+
+    <view style="display: flex; flex-direction: column; align-items: center;" wx:if="{{ hasMore }}">
+        <van-loading color="#1989fa" type="spinner" />
+    </view>
+
+</view>

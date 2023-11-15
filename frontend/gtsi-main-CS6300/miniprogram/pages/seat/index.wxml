@@ -1,0 +1,16 @@
+<view style="display: column;">
+
+<van-cell title="My Reservation" is-link url="/pages/seatReservation/index" />
+
+<view style="height: 8px;"></view>
+
+<van-cell-group wx:for="{{ seats }}" wx:for-item="seat" wx:key='index'>
+    <van-cell title="{{ seat.location +  ' 号自习室第 ' + seat.number + ' 号座位' }}"  use-label-slot is-link url="/pages/seatDetail/index?seatID={{seat._id}}">
+        <view slot="label" style="display: flex;">
+            <van-tag type="primary">{{ seat.type === "short" ? "短期"  : "长期" }} </van-tag>
+        </view>
+    </van-cell>
+</van-cell-group>
+
+
+</view>

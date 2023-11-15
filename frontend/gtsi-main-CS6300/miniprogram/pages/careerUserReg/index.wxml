@@ -1,0 +1,23 @@
+<!--pages/careerUserReg/index.wxml-->
+
+<van-cell title="Check your registered list" size="large" arrow-direction="down" is-link/>
+<van-cell-group wx:for="{{ recommendList }}" wx:for-item="item" wx:key='index'>
+    <van-cell label="activity date: {{ item.targetDate }}" url="/pages/careerActivityDetail/index?id={{item._id}}">
+        <view slot="title" class="title">
+            <view class="van-cell-text gtsi-cell-title">{{ item.title }}</view>
+            <van-tag type="warning">{{item.type}}</van-tag>
+            <view class="gtsi-cell-origin-outside">poster: <span class="gtsi-cell-origin">{{ item.origin }}</span></view>
+        </view>
+    </van-cell>
+</van-cell-group>
+<van-cell title="Check your followed job cards" size="large" arrow-direction="down" is-link/>
+<van-cell-group wx:for="{{ jobList }}" wx:for-item="item" wx:key='index'>
+    <van-cell label="activity date: {{ item.targetDate }}" url="/pages/careerJobDetail/index?id={{item._id}}">
+        <view slot="title" class="title">
+            <view class="van-cell-text gtsi-cell-title">{{ item.title }}</view>
+            <van-tag type="warning">{{item.type}}</van-tag>
+            <view class="gtsi-cell-origin-outside">poster: <span class="gtsi-cell-origin">{{ item.origin }}</span></view>
+        </view>
+    </van-cell>
+</van-cell-group>
+<van-empty image="search" description="You have no registered activities" wx:if="{{ hasContent==false}}" />

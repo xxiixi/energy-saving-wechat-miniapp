@@ -1,0 +1,15 @@
+<!--pages/requests/index.wxml-->
+<van-notice-bar left-icon="volume-o" left-icon="volume-o" color="#1989fa" background="#ecf9ff" text="Only shows the most recent 50 requests." />
+
+<van-cell-group>
+    <van-cell wx:for="{{ requests }}" wx:key='index' title="{{ item.title }}" value="{{ item.program }}" use-label-slot>
+        <view slot="label" style="display: flex; flex-direction: column;">
+            <view>Author: {{ item.author }}</view>
+            <view>Request By: {{ item.name }}</view>
+            <view>Affiliation: {{ item.affiliation }}</view>
+            <view>Request Time: {{ item.date }}</view>
+        </view>
+    </van-cell>
+</van-cell-group>
+
+<van-toast id="van-toast" />
