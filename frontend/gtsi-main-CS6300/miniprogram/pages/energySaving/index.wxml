@@ -1,2 +1,15 @@
-<!--pages/dorm/index.wxml-->
-<text>pages/dorm/index.wxml</text>
+<view class="container">
+  <view class="header">EnergySaving Alerts</view>
+  <block wx:for="{{alerts}}" wx:key="id">
+    <view class="alert-card">
+      <view class="alert-header">
+        <text>{{item.alert_type_text}} - Room {{item.room_id}}</text>
+      </view>
+      <view class="alert-body">
+        <text>Status: {{item.status_text}} | Reward: {{item.reward}} Points</text>
+        <text wx:if="{{item.status == 1}}">Resolved by: User #{{item.solver}}</text>
+      </view>
+    </view>
+  </block>
+</view>
+
