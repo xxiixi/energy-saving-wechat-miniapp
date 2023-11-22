@@ -1,0 +1,13 @@
+<view class="container">
+  <view class="header">Your Header Text</view>
+  
+  <block wx:for="{{alerts}}" wx:key="id">
+    <view class="alert-card" bindtap="onAlertTap" data-id="{{item.id}}">
+      <view class="alert-header">Alert #{{item.id}}</view>
+      <view class="alert-body">
+        <text>Status: {{item.status_text}} | Reward: {{item.reward}} Points</text>
+        <text wx:if="{{item.status == 1}}">Resolved by: User #{{item.solver}}</text>
+      </view>
+    </view>
+  </block>
+</view>

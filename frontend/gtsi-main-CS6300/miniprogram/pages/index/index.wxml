@@ -6,7 +6,7 @@
 
   <!-- <van-grid-item icon="bullhorn-o" icon-color="skyblue" link-type="navigateTo" url="/pages/career/index" text="Career Services" /> -->
 
-  <van-grid-item icon="apps-o" icon-color="turquoise" link-type="navigateTo" url="/pages/energySaving/index" text="Energy Saving" />
+  <van-grid-item icon="apps-o" icon-color="turquoise" link-type="navigateTo" url="/pages/energySaving_alertList/index" text="Energy Saving" />
   <van-grid-item icon="bullhorn-o" icon-color="darkorange" link-type="navigateTo" url="" text="Project Proposal" />
   <van-grid-item icon="more-o" icon-color="darkseagreen" link-type="navigateTo" url="" text="More coming soon..." />
   

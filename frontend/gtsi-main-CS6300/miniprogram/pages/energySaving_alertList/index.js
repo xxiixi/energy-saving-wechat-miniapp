@@ -1,4 +1,4 @@
-// pages/dorm/index.js
+// pages/energySaving/index.js
 Page({
 
     /**

@@ -28,8 +28,10 @@
     "pages/careerPost/index",
     "pages/careerUserReg/index",
     "pages/careerRegStudents/index",
-    "pages/energySaving/index",
-    "pages/editBook/index"
+    "pages/editBook/index",
+    "pages/energySaving_alertList/index",
+    "pages/energySaving_alertDetail/index"
+    
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

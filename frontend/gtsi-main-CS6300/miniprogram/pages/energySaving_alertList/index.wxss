@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.alert-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.alert-header {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.alert-body {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* New Styles for <text> elements in .alert-body */
+.alert-body text {
+  display: block; /* This will make each <text> element behave like a block, starting on a new line */
+  margin-bottom: 5px; /* Adjust this value to control spacing between lines */
+}

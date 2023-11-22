@@ -27,3 +27,7 @@
   margin-top: 5px;
 }
 
+.alert-body text {
+  display: block;
+  margin-bottom: 5px;
+}
