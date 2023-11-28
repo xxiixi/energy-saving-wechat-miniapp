@@ -1,3 +1,4 @@
+/* pages/energySaving_alertDetail/alertDetail.wxss */
 .container {
   display: flex;
   flex-direction: column;
@@ -27,8 +28,7 @@
   margin-top: 5px;
 }
 
-/* New Styles for <text> elements in .alert-body */
 .alert-body text {
-  display: block; /* This will make each <text> element behave like a block, starting on a new line */
-  margin-bottom: 5px; /* Adjust this value to control spacing between lines */
+  display: block;
+  margin-bottom: 5px;
 }

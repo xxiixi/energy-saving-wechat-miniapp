@@ -1,5 +1,5 @@
 // app.js
-const api = require("./API")
+// const api = require("./API")
 App({
     onLaunch() {
         wx.cloud.init({

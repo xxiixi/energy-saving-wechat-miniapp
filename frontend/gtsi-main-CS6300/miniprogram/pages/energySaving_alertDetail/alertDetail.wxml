@@ -1,3 +1,4 @@
+<!--pages/energySaving_alertDetail/alertDetail.wxml-->
 <view class="container">
   <view class="header">Your Header Text</view>
   
