@@ -1,6 +1,6 @@
 const app = getApp();
 
-// pages/library/index.js
+// pages/index/index.js
 Page({
   data: {},
   /**

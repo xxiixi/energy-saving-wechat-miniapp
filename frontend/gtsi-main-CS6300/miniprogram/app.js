@@ -7,18 +7,18 @@ App({
             traceUser: true,
         });
 
-        wx.cloud.callFunction({
-                name: 'getUser'
-            })
-            .then(res => {
-                if (res.result.data.length > 0) {
-                    this.globalData.user = res.result.data[0];
-                } else {
-                    wx.reLaunch({
-                        url: '/pages/index',
-                    });
-                }
-            });
+        // wx.cloud.callFunction({
+        //         name: 'getUser'
+        //     })
+        //     .then(res => {
+        //         if (res.result.data.length > 0) {
+        //             this.globalData.user = res.result.data[0];
+        //         } else {
+        //             wx.reLaunch({
+        //                 url: '/pages/index',
+        //             });
+        //         }
+        //     });
     },
 
 
