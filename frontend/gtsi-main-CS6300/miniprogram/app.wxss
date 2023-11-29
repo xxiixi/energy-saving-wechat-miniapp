@@ -42,9 +42,9 @@ page {
     font-size:12px;
     color:#666;
 }
-.gtsi-cell-description{
+/* .gtsi-cell-description{
 
-}
+} */
 .gtsi-cell-origin{
     font-weight:600;
     font-size:14px;

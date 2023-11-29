@@ -6,12 +6,12 @@
         <van-grid-item icon="/images/request.png" text="Book Request" url="/pages/bookRequest/index" />
     </van-grid>
 
-    <view wx:if="{{user.role === 'admin'}}">
+    <!-- <view wx:if="{{user.role === 'admin'}}">
         <van-grid column-num="2" clickable>
             <van-grid-item icon="/images/add.png" text="Add Books" url="/pages/addBook/index" />
             <van-grid-item icon="/images/user.png" text="User Manage" url="/pages/userManage/index" />
         </van-grid>
-    </view>
+    </view> -->
 
     <van-sticky>
         <van-dropdown-menu>

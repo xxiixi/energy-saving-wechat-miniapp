@@ -1,4 +1,4 @@
-// pages/energySaving/index.js
+// pages/energySaving_alertList/alertList.js
 Page({
 
   /**
