@@ -1,14 +1,41 @@
-<!--pages/energySaving_alertDetail/alertDetail.wxml-->
 <view class="container">
-  <view class="header">Your Header Text</view>
-  
-  <block wx:for="{{alerts}}" wx:key="id">
-    <view class="alert-card" bindtap="onAlertTap" data-id="{{item.id}}">
-      <view class="alert-header">Alert #{{item.id}}</view>
-      <view class="alert-body">
-        <text>Status: {{item.status_text}} | Reward: {{item.reward}} Points</text>
-        <text wx:if="{{item.status == 1}}">Resolved by: User #{{item.solver}}</text>
-      </view>
-    </view>
-  </block>
+  <view class="item">
+    <view class="label">Alert ID:{{alertDetail.id}}</view>
+  </view>
+  <view class="item">
+    <view class="label">Alert Type:</view>
+    <view>{{alertDetail.alert_type === 0 ? 'Windows are detected open while AC is on' : 'The AC is running unnecessarily'}}</view>
+  </view>
+  <view class="item">
+    <view class="label">Room ID: {{alertDetail.room_id}}</view>
+  </view>
+  <view class="item" wx:if="{{alertDetail.ac_id}}">
+    <view class="label">AC ID: {{alertDetail.ac_id}}</view>
+  </view>
+  <view class="item" wx:if="{{alertDetail.window_id}}">
+    <view class="label">Window ID: {{alertDetail.window_id}}</view>
+  </view>
+  <view class="item">
+    <view class="label">Status:</view>
+    <view>{{alertDetail.status === 0 ? 'Alert is active and unresolved' : 'Alert has been resolved'}}</view>
+  </view>
+  <view class="item" wx:if="{{alertDetail.solver}}">
+    <view class="label">Solved By: User #{{alertDetail.solver}}</view>
+  </view>
+  <view class="item">
+    <view class="label">Reward: {{alertDetail.reward}} Points</view>
+  </view>
+  <!-- <view class="item" wx:if="{{alertDetail.solver_comment}}">
+    <view class="label">Solver Comment:</view>
+    <view>{{alertDetail.solver_comment}}</view>
+  </view> -->
+
+<view style="height: 8px;"></view>
+<view wx:if="{{alertDetail.solver_comment}}">
+<van-cell-group inset>
+    <van-cell title="Solver Comment" label="{{alertDetail.solver_comment}}" size="large" />
+</van-cell-group>
+</view>
+<view style="height: 8px;"></view>
+
 </view>

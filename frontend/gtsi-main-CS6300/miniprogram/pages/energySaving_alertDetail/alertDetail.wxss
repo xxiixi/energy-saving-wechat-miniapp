@@ -1,34 +1,13 @@
-/* pages/energySaving_alertDetail/alertDetail.wxss */
+/* pages/alertDetail/alertDetail.wxss */
 .container {
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
+  padding: 15px;
 }
 
-.header {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.alert-card {
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 10px;
+.item {
   margin-bottom: 10px;
+  text-align: left; /* 设置文本左对齐 */
 }
 
-.alert-header {
-  font-size: 16px;
+.label {
   font-weight: bold;
-}
-
-.alert-body {
-  font-size: 14px;
-  margin-top: 5px;
-}
-
-.alert-body text {
-  display: block;
-  margin-bottom: 5px;
 }
