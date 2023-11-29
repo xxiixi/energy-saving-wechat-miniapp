@@ -1,26 +1,13 @@
 <view style="display: column;">
 </view>
-  <!-- <view class="header">EnergySaving Alerts</view>
-  <view style="height: 10px;"> -->
 
-  <!-- <block wx:for="{{alerts}}" wx:key="id">
-    <view class="alert-card">
-      <view class="alert-header">
-        <text>{{item.alert_type_text}} - Room {{item.room_id}}</text>
-      </view>
-      <view class="alert-body">
-        <text>Status: {{item.status_text}} | Reward: {{item.reward}} Points</text>
-        <text wx:if="{{item.status == 1}}">Resolved by: User #{{item.solver}}</text>
-      </view>
-    </view>
-  </block> -->
   <view>
   <view class="header">EnergySaving Alerts</view>
 
   <van-cell-group wx:for="{{ alerts }}" wx:for-item="alert" wx:key="alert.id">
-    <van-cell url="/pages/energySaving_alertDetail/alertDetail?alertID={{alert.id}}" clickable>
+    <van-cell url="{{alert.status === 0 ? '/pages/energySaving_alertSolve/alertSolve?alertID=' + alert.id : '/pages/energySaving_alertDetail/alertDetail?alertID=' + alert.id}}"  clickable>
       <view slot="title" class="title">
-      <view class="van-cell-text">{{ alert.alert_type_text }} - Room {{ alert.room_id }}</view>
+      <view class="van-cell-text">{{ alert.alert_type === 0 ? '`AlertOpenWindow`' : 'AlertRunningAC' }} - Room {{ alert.room_id }}</view>
       <view style="width: 8px;"></view>
       <van-tag plain type="primary">Reward {{ alert.reward}}</van-tag>
 

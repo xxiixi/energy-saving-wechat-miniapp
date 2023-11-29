@@ -1,0 +1,15 @@
+<!--pages/energySaving_alertSolve/alertSolve.wxml-->
+<view class="container">
+  <view class="item">
+    <view class="label">Alert ID: {{alertId}}</view>
+  </view>
+  <view class="item">
+    <view class="label">User ID:</view>
+    <input type="number" bindinput="handleUserIdChange" placeholder="Enter your User ID" />
+  </view>
+  <view class="item">
+    <view class="label">Comment:</view>
+    <textarea bindinput="handleCommentChange" placeholder="Enter your comment here"></textarea>
+  </view>
+  <van-button type="primary" bind:click="submitSolution">Submit Solution</van-button>
+</view>

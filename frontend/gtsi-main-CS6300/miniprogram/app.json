@@ -1,13 +1,18 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/book/index",
+    "pages/bookTag/index",
+    "pages/bookRequest/index",
+    "pages/borrowRecords/index",
+    "pages/editBook/index",
     "pages/library/index",
     "pages/seat/index",
     "pages/seatDetail/index",
     "pages/seatReservation/index",
     "pages/energySaving_alertList/alertList",
-    "pages/energySaving_alertDetail/alertDetail"
-    
+    "pages/energySaving_alertDetail/alertDetail",
+    "pages/energySaving_alertSolve/alertSolve"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

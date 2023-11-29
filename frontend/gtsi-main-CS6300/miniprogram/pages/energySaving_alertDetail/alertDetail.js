@@ -10,7 +10,6 @@ Page({
   },
 
   fetchAlertDetail: function (alertID) {
-    // Replace with your actual API request logic
     wx.request({
       url: 'http://175.178.194.182:8080/alert/list',
       method: 'GET',

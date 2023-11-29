@@ -1,16 +1,10 @@
 // pages/energySaving_alertList/alertList.js
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
     alerts: []
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad(options) {
     this.fetchAlerts();
   },
@@ -37,7 +31,6 @@ Page({
     const processedAlerts = alerts.map(alert => {
       return {
         ...alert,
-        alert_type_text: this.getAlertTypeText(alert.alert_type),
         status_text: alert.status === 0 ? 'Open' : 'Closed'
       };
     });
@@ -47,14 +40,6 @@ Page({
     });
   },
 
-  getAlertTypeText: function(type) {
-    switch (type) {
-      case 0: return 'AlertRunningAC';
-      case 1: return 'AlertOpenWindow';
-      default: return 'Unknown';
-    }
-  },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -62,11 +47,10 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
 
+  onShow: function() {
+    // Fetch the alerts every time the page is shown
+    this.fetchAlerts();
   },
 
   /**
