@@ -11,12 +11,23 @@
   <view class="item">
     <view class="label">Room ID: {{alertDetail.room_id}}</view>
   </view>
-  <view class="item" wx:if="{{alertDetail.ac_id}}">
-    <view class="label">AC ID: {{alertDetail.ac_id}}</view>
-  </view>
-  <view class="item" wx:if="{{alertDetail.window_id}}">
-    <view class="label">Window ID: {{alertDetail.window_id}}</view>
-  </view>
+
+ <view class="item" wx:if="{{alertDetail.ac_id}}">
+  <view class="label">AC ID: {{alertDetail.ac_id}}</view>
+  <!-- The drop-down box for setting the ac status -->
+  <picker mode="selector" bindchange="onACStatusChange" range="{{statusOptions}}" range-key="name">
+    <van-cell title="Set AC Status" value="{{acStatus !== null ? (acStatus === 1 ? 'Open' : 'Close') : 'Select Status'}}" is-link />
+  </picker>
+</view>
+
+<view class="item" wx:if="{{alertDetail.window_id}}">
+  <view class="label">Window ID: {{alertDetail.window_id}}</view>
+  <!-- The drop-down box for setting the switch status -->
+  <picker mode="selector" bindchange="onSwitchStatusChange" range="{{statusOptions}}" range-key="name">
+    <van-cell title="Set Switch Status" value="{{switchStatus !== null ? (switchStatus === 1 ? 'Open' : 'Close') : 'Select Status'}}" is-link />
+  </picker>
+</view>
+
   <view class="item">
     <view class="label">Status: {{alertDetail.status === 0 ? 'Alert is active and unresolved' : 'Alert has been resolved'}}</view>
   </view>
@@ -38,4 +49,3 @@
   </view>
   <van-button type="primary" bind:click="submitSolution">Submit Solution</van-button>
 </view>
-

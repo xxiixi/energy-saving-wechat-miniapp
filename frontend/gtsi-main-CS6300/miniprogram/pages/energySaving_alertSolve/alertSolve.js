@@ -4,7 +4,15 @@ Page({
     alertId: null,
     userId: '',
     comment: '',
-    alertDetail: {} // Store the alert details
+    alertDetail: {}, 
+    statusOptions: [
+      { name: 'Select Status', value: null },
+      { name: 'Open', value: 1 },
+      { name: 'Close', value: 0 }
+    ],
+    selectedStatus: { name: 'Select Status', value: null },
+    acStatus: null, // Store the selected air conditioner status
+    switchStatus: null, // Store the selected switch status
   },
 
   onLoad: function(options) {
@@ -47,8 +55,19 @@ Page({
     this.setData({ comment: e.detail.value });
   },
 
+  onACStatusChange: function(e) {
+    const selected = this.data.statusOptions[e.detail.value];
+    this.setData({ acStatus: selected.value });
+  },
+
+  onSwitchStatusChange: function(e) {
+    const selected = this.data.statusOptions[e.detail.value];
+    this.setData({ switchStatus: selected.value });
+  },
+
   submitSolution: function() {
-    const { alertId, userId, comment } = this.data;
+    const { alertId, userId, comment, acStatus, switchStatus, alertDetail } = this.data;
+    
     if (!userId) {
       wx.showToast({
         title: 'Please enter User ID',
@@ -56,6 +75,17 @@ Page({
       });
       return;
     }
+    // Update AC status if needed
+    if (acStatus !== null && acStatus !== alertDetail.ac_status) {
+      this.setACStatus(acStatus, alertDetail.ac_id, alertDetail.room_id);
+    }
+
+    // Update Switch status if needed
+    if (switchStatus !== null && switchStatus !== alertDetail.switch_status) {
+      this.setSwitchStatus(switchStatus, alertDetail.window_id, alertDetail.room_id);
+    }
+
+    // Solve the alert
     wx.request({
       url: 'http://175.178.194.182:8080/alert/solve',
       method: 'POST',
@@ -65,14 +95,13 @@ Page({
       data: `alert_id=${alertId}&user_id=${userId}&comment=${encodeURIComponent(comment)}`,
       success: (res) => {
         if (res.statusCode === 200) {
-          // add corresponding reward points to current user
-          this.fetchUserRewards(userId);
+          this.fetchUserRewards(userId, true); // Fetch rewards and navigate back
         }
       },
       fail: () => {
         wx.showToast({
           title: 'Failed to solve alert',
-            icon: 'none'
+          icon: 'none'
         });
       }
     });
@@ -120,6 +149,43 @@ Page({
       }
     });
   },
+
+  setACStatus: function(status, sensorId, roomId) {
+    wx.request({
+      url: 'http://175.178.194.182:8080/airconditioner/status/set',
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      data: `status=${status}&sensor_id=${sensorId}&room_id=${roomId}`,
+      fail: () => {
+        wx.showToast({
+          title: 'Failed to update AC status',
+          icon: 'none',
+          duration: 2000
+        });
+      }
+    });
+  },
+  
+  setSwitchStatus: function(status, sensorId, roomId) {
+    wx.request({
+      url: 'http://175.178.194.182:8080/switch/status/set',
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      data: `status=${status}&sensor_id=${sensorId}&room_id=${roomId}`,
+      fail: () => {
+        wx.showToast({
+          title: 'Failed to update Switch status',
+          icon: 'none',
+          duration: 2000
+        });
+      }
+    });
+  },
+
 
 
     /**
