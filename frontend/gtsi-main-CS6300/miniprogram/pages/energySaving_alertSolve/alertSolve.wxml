@@ -1,51 +1,38 @@
 <!--pages/energySaving_alertSolve/alertSolve.wxml-->
-<view class="container">
-  <!-- Display the alert details -->
-  <view class="item">
-    <view class="label">Alert ID: {{alertDetail.id}}</view>
-  </view>
-  <view class="item">
-    <view class="label">Alert Type:</view>
-    <view>{{alertDetail.alert_type === 0 ? 'Windows are detected open while AC is on' : 'The AC is running unnecessarily'}}</view>
-  </view>
-  <view class="item">
-    <view class="label">Room ID: {{alertDetail.room_id}}</view>
+<view style="display: flex; flex-direction: column; margin-top: 16px;">
+  <van-cell-group inset>
+    <van-cell title="Alert Detailed Information" title-class="title" />
+    <van-cell title="Alert {{alertDetail.id}} - Current Room: {{alertDetail.room_id}} "/>
+    <van-cell title="Alert Type" value="{{alertDetail.alert_type === 0 ? 'Windows are detected open while AC is on' : 'The AC is running unnecessarily'}}" />
+    <van-cell title="Alert Status" value="Alert Unresolved"/>
+
+    <van-cell wx:if="{{alertDetail.ac_id}}" title="AC ID" value="{{alertDetail.ac_id}}" />
+    <van-cell wx:if="{{alertDetail.ac_id}}" is-link use-title-slot>
+      <view slot="title">Set AC Status</view>
+      <picker mode="selector" bindchange="onACStatusChange" range="{{statusOptions}}" range-key="name">
+        <view>{{acStatus !== null ? (acStatus === 1 ? 'Open' : 'Close') : 'Select Status'}}</view>
+      </picker>
+    </van-cell>
+
+    <van-cell wx:if="{{alertDetail.window_id}}" title="Window ID" value="{{alertDetail.window_id}}" />
+    <van-cell wx:if="{{alertDetail.window_id}}" is-link use-title-slot>
+      <view slot="title">Set Window Status</view>
+      <picker mode="selector" bindchange="onSwitchStatusChange" range="{{statusOptions}}" range-key="name">
+        <view>{{switchStatus !== null ? (switchStatus === 1 ? 'Open' : 'Close') : 'Select Status'}}</view>
+      </picker>
+    </van-cell>
+  </van-cell-group>
+
+
+  <view style="margin-top: 16px; padding: 0 16px;">
+    <van-cell title="🏆 Reward" value="{{alertDetail.reward}} Points" />
+  <van-field label="🆔 User ID" type="number" placeholder="Enter your User ID" bindinput="handleUserIdChange" />
+  <van-field label="📝 Comment" type="textarea" autosize="{{ {minRows: 1, maxRows: 4} }}" placeholder="Enter your comment here" bindinput="handleCommentChange" />
+
   </view>
 
- <view class="item" wx:if="{{alertDetail.ac_id}}">
-  <view class="label">AC ID: {{alertDetail.ac_id}}</view>
-  <!-- The drop-down box for setting the ac status -->
-  <picker mode="selector" bindchange="onACStatusChange" range="{{statusOptions}}" range-key="name">
-    <van-cell title="Set AC Status" value="{{acStatus !== null ? (acStatus === 1 ? 'Open' : 'Close') : 'Select Status'}}" is-link />
-  </picker>
-</view>
-
-<view class="item" wx:if="{{alertDetail.window_id}}">
-  <view class="label">Window ID: {{alertDetail.window_id}}</view>
-  <!-- The drop-down box for setting the switch status -->
-  <picker mode="selector" bindchange="onSwitchStatusChange" range="{{statusOptions}}" range-key="name">
-    <van-cell title="Set Switch Status" value="{{switchStatus !== null ? (switchStatus === 1 ? 'Open' : 'Close') : 'Select Status'}}" is-link />
-  </picker>
-</view>
-
-  <view class="item">
-    <view class="label">Status: {{alertDetail.status === 0 ? 'Alert is active and unresolved' : 'Alert has been resolved'}}</view>
+  <view style="margin-top: 16px; display: flex; justify-content: space-between; padding: 0 16px;">
+    <van-button type="default" bind:click="goBack">Return</van-button>
+    <van-button type="primary" bind:click="submitSolution">Submit Solution</van-button>
   </view>
-  <view class="item" wx:if="{{alertDetail.solver}}">
-    <view class="label">Solved By: User #{{alertDetail.solver}}</view>
-  </view>
-  <view class="item">
-    <view class="label">Reward: {{alertDetail.reward}} Points</view>
-  </view>
-
-  <!-- User input fields and submit button -->
-  <view class="item">
-    <view class="label">User ID:</view>
-    <input type="number" bindinput="handleUserIdChange" placeholder="Enter your User ID" />
-  </view>
-  <view class="item">
-    <view class="label">Comment:</view>
-    <textarea bindinput="handleCommentChange" placeholder="Enter your comment here"></textarea>
-  </view>
-  <van-button type="primary" bind:click="submitSolution">Submit Solution</van-button>
 </view>
