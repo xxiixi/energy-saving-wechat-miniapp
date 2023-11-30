@@ -25,10 +25,6 @@
   <view class="item">
     <view class="label">Reward: {{alertDetail.reward}} Points</view>
   </view>
-  <!-- <view class="item" wx:if="{{alertDetail.solver_comment}}">
-    <view class="label">Solver Comment:</view>
-    <view>{{alertDetail.solver_comment}}</view>
-  </view> -->
 
 <view style="height: 8px;"></view>
 <view wx:if="{{alertDetail.solver_comment}}">
@@ -37,5 +33,5 @@
 </van-cell-group>
 </view>
 <view style="height: 8px;"></view>
-
+  <van-button type="primary" bind:click="goBack">Return to Alert List</van-button>
 </view>

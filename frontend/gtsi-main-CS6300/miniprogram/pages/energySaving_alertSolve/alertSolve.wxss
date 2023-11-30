@@ -1,5 +1,4 @@
 /* pages/energySaving_alertSolve/alertSolve.wxss */
-/* pages/alertSolve/alertSolve.wxss */
 .container {
   padding: 15px;
 }

@@ -34,5 +34,10 @@ Page({
         });
       }
     });
+  },
+  goBack: function() {
+    wx.navigateBack({
+      delta: 1 // Navigate back to the previous page
+    });
   }
 });

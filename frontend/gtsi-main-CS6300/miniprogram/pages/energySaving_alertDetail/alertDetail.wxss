@@ -5,9 +5,12 @@
 
 .item {
   margin-bottom: 10px;
-  text-align: left; /* 设置文本左对齐 */
 }
 
 .label {
   font-weight: bold;
+}
+/* Add to alertDetail.wxss */
+.van-button {
+  margin-top: 20px; /* Adjust as needed */
 }

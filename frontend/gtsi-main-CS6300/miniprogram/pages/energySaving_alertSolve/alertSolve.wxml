@@ -1,8 +1,33 @@
 <!--pages/energySaving_alertSolve/alertSolve.wxml-->
 <view class="container">
+  <!-- Display the alert details -->
   <view class="item">
-    <view class="label">Alert ID: {{alertId}}</view>
+    <view class="label">Alert ID: {{alertDetail.id}}</view>
   </view>
+  <view class="item">
+    <view class="label">Alert Type:</view>
+    <view>{{alertDetail.alert_type === 0 ? 'Windows are detected open while AC is on' : 'The AC is running unnecessarily'}}</view>
+  </view>
+  <view class="item">
+    <view class="label">Room ID: {{alertDetail.room_id}}</view>
+  </view>
+  <view class="item" wx:if="{{alertDetail.ac_id}}">
+    <view class="label">AC ID: {{alertDetail.ac_id}}</view>
+  </view>
+  <view class="item" wx:if="{{alertDetail.window_id}}">
+    <view class="label">Window ID: {{alertDetail.window_id}}</view>
+  </view>
+  <view class="item">
+    <view class="label">Status: {{alertDetail.status === 0 ? 'Alert is active and unresolved' : 'Alert has been resolved'}}</view>
+  </view>
+  <view class="item" wx:if="{{alertDetail.solver}}">
+    <view class="label">Solved By: User #{{alertDetail.solver}}</view>
+  </view>
+  <view class="item">
+    <view class="label">Reward: {{alertDetail.reward}} Points</view>
+  </view>
+
+  <!-- User input fields and submit button -->
   <view class="item">
     <view class="label">User ID:</view>
     <input type="number" bindinput="handleUserIdChange" placeholder="Enter your User ID" />
@@ -13,3 +38,4 @@
   </view>
   <van-button type="primary" bind:click="submitSolution">Submit Solution</van-button>
 </view>
+
