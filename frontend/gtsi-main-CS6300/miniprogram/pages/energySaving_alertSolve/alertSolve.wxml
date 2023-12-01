@@ -1,22 +1,24 @@
 <!--pages/energySaving_alertSolve/alertSolve.wxml-->
 <view style="display: flex; flex-direction: column; margin-top: 16px;">
-  <van-cell-group inset>
-    <van-cell title="Alert Detailed Information" title-class="title" />
-    <van-cell title="Alert {{alertDetail.id}} - Current Room: {{alertDetail.room_id}} "/>
+  <view class="title-container">
+    <view class="title-text">🚨 Solve Alert {{alertDetail.id}}</view>
+  </view> 
+  <van-cell-group inset style="margin-top: 16px;">
+    <van-cell title="📣 Room {{alertDetail.room_id}} " title-class="title"/>
     <van-cell title="Alert Type" value="{{alertDetail.alert_type === 0 ? 'Windows are detected open while AC is on' : 'The AC is running unnecessarily'}}" />
-    <van-cell title="Alert Status" value="Alert Unresolved"/>
+    <van-cell title="Alert Status" value="Alert Unresolved ❌"/>
 
-    <van-cell wx:if="{{alertDetail.ac_id}}" title="AC ID" value="{{alertDetail.ac_id}}" />
+    <!-- <van-cell wx:if="{{alertDetail.ac_id}}" title="AC ID" value="{{alertDetail.ac_id}}" /> -->
     <van-cell wx:if="{{alertDetail.ac_id}}" is-link use-title-slot>
-      <view slot="title">Set AC Status</view>
+      <view slot="title">Set AC Status (id.<figcaption></figcaption>{{alertDetail.ac_id}})</view>
       <picker mode="selector" bindchange="onACStatusChange" range="{{statusOptions}}" range-key="name">
         <view>{{acStatus !== null ? (acStatus === 1 ? 'Open' : 'Close') : 'Select Status'}}</view>
       </picker>
     </van-cell>
 
-    <van-cell wx:if="{{alertDetail.window_id}}" title="Window ID" value="{{alertDetail.window_id}}" />
+    <!-- <van-cell wx:if="{{alertDetail.window_id}}" title="Window ID" value="{{alertDetail.window_id}}" /> -->
     <van-cell wx:if="{{alertDetail.window_id}}" is-link use-title-slot>
-      <view slot="title">Set Window Status</view>
+      <view slot="title">Set Window Status (id.{{alertDetail.window_id}})</view>
       <picker mode="selector" bindchange="onSwitchStatusChange" range="{{statusOptions}}" range-key="name">
         <view>{{switchStatus !== null ? (switchStatus === 1 ? 'Open' : 'Close') : 'Select Status'}}</view>
       </picker>
@@ -26,13 +28,14 @@
 
   <view style="margin-top: 16px; padding: 0 16px;">
     <van-cell title="🏆 Reward" value="{{alertDetail.reward}} Points" />
-  <van-field label="🆔 User ID" type="number" placeholder="Enter your User ID" bindinput="handleUserIdChange" />
+  <van-field label="👤 User ID" type="number" placeholder="Enter your User ID" bindinput="handleUserIdChange" />
   <van-field label="📝 Comment" type="textarea" autosize="{{ {minRows: 1, maxRows: 4} }}" placeholder="Enter your comment here" bindinput="handleCommentChange" />
 
   </view>
 
   <view style="margin-top: 16px; display: flex; justify-content: space-between; padding: 0 16px;">
-    <van-button type="default" bind:click="goBack">Return</van-button>
+    <van-button custom-class="custom-blue-button" bind:click="goBack">Return</van-button>
+
     <van-button type="primary" bind:click="submitSolution">Submit Solution</van-button>
   </view>
 </view>

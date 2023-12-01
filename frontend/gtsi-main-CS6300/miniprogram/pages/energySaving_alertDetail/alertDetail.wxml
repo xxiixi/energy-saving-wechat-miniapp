@@ -1,37 +1,24 @@
-<view class="container">
-  <view class="item">
-    <view class="label">Alert ID:{{alertDetail.id}}</view>
-  </view>
-  <view class="item">
-    <view class="label">Alert Type:</view>
-    <view>{{alertDetail.alert_type === 0 ? 'Windows are detected open while AC is on' : 'The AC is running unnecessarily'}}</view>
-  </view>
-  <view class="item">
-    <view class="label">Room ID: {{alertDetail.room_id}}</view>
-  </view>
-  <view class="item" wx:if="{{alertDetail.ac_id}}">
-    <view class="label">AC ID: {{alertDetail.ac_id}}</view>
-  </view>
-  <view class="item" wx:if="{{alertDetail.window_id}}">
-    <view class="label">Window ID: {{alertDetail.window_id}}</view>
-  </view>
-  <view class="item">
-    <view class="label">Status:</view>
-    <view>{{alertDetail.status === 0 ? 'Alert is active and unresolved' : 'Alert has been resolved'}}</view>
-  </view>
-  <view class="item" wx:if="{{alertDetail.solver}}">
-    <view class="label">Solved By: User #{{alertDetail.solver}}</view>
-  </view>
-  <view class="item">
-    <view class="label">Reward: {{alertDetail.reward}} Points</view>
-  </view>
+<!--pages/energySaving_alertDetail/alertDetail.wxml-->
+<view style="display: flex; flex-direction: column; margin-top: 16px;">
+  <view class="title-container">
+    <view class="title-text">🎉 Solved Alert Detail</view>
+  </view> 
+  <van-cell-group inset style="margin-top: 16px;">
+    <van-cell title="📣 Alert {{alertDetail.id}} - Room {{alertDetail.room_id}}"  title-class="title" />
+    <van-cell title="Alert Type" value="{{alertDetail.alert_type === 0 ? 'Windows are detected open while AC is on' : 'The AC is running unnecessarily'}}" />
+    <van-cell title="Alert Status" value="Alert Resolved ✅" />
 
-<view style="height: 8px;"></view>
-<view wx:if="{{alertDetail.solver_comment}}">
-<van-cell-group inset>
-    <van-cell title="Solver Comment" label="{{alertDetail.solver_comment}}" size="large" />
-</van-cell-group>
-</view>
-<view style="height: 8px;"></view>
-  <van-button type="primary" bind:click="goBack">Return to Alert List</van-button>
+    <van-cell wx:if="{{alertDetail.ac_id}}" title="AC ID" value="{{alertDetail.ac_id}}" />
+    <van-cell wx:if="{{alertDetail.window_id}}" title="Window ID" value="{{alertDetail.window_id}}" />
+
+    <van-cell title="🏆 Reward" value="{{alertDetail.reward}} Points" />
+    <van-cell title="🪪 Solved By" value="{{alertDetail.solver ? 'User #' + alertDetail.solver : 'N/A'}}" />
+    <van-cell wx:if="{{alertDetail.solver_comment}}" title="📝 Solver Comment" value="{{alertDetail.solver_comment}}" />
+  </van-cell-group>
+
+  <view style="height: 16px;"></view>
+
+  <view style="padding: 0 16px;">
+    <van-button type="primary" custom-class="custom-blue-button" bind:click="goBack">Return to Alert List</van-button>
+  </view>
 </view>

@@ -47,3 +47,15 @@
   display: block; /* This will make each <text> element behave like a block, starting on a new line */
   margin-bottom: 5px; /* Adjust this value to control spacing between lines */
 }
+
+.page-header {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 16px;
+}
+
+.cell-group-container {
+  padding: 0 14px; 
+  margin-bottom: 14px;
+}

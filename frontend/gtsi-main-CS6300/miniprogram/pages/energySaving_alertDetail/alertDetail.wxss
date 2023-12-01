@@ -14,3 +14,23 @@
 .van-button {
   margin-top: 20px; /* Adjust as needed */
 }
+
+.title-container {
+  display: flex;
+  justify-content: center;
+}
+
+.title-text {
+  font-size: 20px; /* 调整字体大小 */
+  font-weight: bold; /* 字体加粗 */
+  /* 可以添加更多样式，如颜色等 */
+}
+
+.custom-blue-button {
+  background-color: #1D7CF8; 
+  color: white; /* 如果需要的话，设置文字颜色 */
+}
+
+.title {
+  font-size: 18px;
+}

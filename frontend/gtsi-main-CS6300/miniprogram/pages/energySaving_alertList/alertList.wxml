@@ -2,35 +2,29 @@
 </view>
 
   <view>
-  <view class="header">EnergySaving Alerts</view>
+  <view class="header" class="page-header">EnergySaving Alerts</view>
 
+  <view class="cell-group-container" style="margin-top: 16px;">
   <van-cell-group wx:for="{{ alerts }}" wx:for-item="alert" wx:key="alert.id">
     <van-cell url="{{alert.status === 0 ? '/pages/energySaving_alertSolve/alertSolve?alertID=' + alert.id : '/pages/energySaving_alertDetail/alertDetail?alertID=' + alert.id}}"  clickable>
       <view slot="title" class="title">
-      <view class="van-cell-text">{{ alert.alert_type === 0 ? '`AlertOpenWindow`' : 'AlertRunningAC' }} - Room {{ alert.room_id }}</view>
+      <view class="van-cell-text">Alert {{ alert.id}} - Room {{ alert.room_id }}</view>
       <view style="width: 8px;"></view>
       <van-tag plain type="primary">Reward {{ alert.reward}}</van-tag>
-
-      <van-tag color="{{ alert.status === 1 ? '#006FFF' : '#7232dd' }}" style="margin-left: 5px">{{ alert.status === 1 ? 'Solved By: User #' + alert.solver : 'Unresolved' }}</van-tag>
-
-      <van-tag color="{{ alert.status === 0 ? '#ff9900' : '#33cc33' }}" style="margin-left: 5px">{{ alert.status_text }}</van-tag>
+      <van-tag color="{{ alert.status === 1 ? '#006FFF' : '#DD3265' }}" style="margin-left: 5px">{{ alert.status === 1 ? 'Solved By: User #' + alert.solver : 'Unresolved' }}</van-tag>
+      <van-tag color="{{ alert.status === 0 ? '#F1C40F' : '#33cc33' }}" style="margin-left: 5px">{{ alert.status_text }}</van-tag>
 
       </view>
-
       <view slot="label" style="display: flex; align-items: center; justify-content: space-between;">
-
-        
         <text>
           Reward: {{ alert.reward }} Points
         </text>
       </view>
     </van-cell>
   </van-cell-group>
+</view>
 
   <view style="display: flex; flex-direction: column; align-items: center;" wx:if="{{ hasMore }}">
     <van-loading color="#1989fa" type="spinner" />
   </view>
 </view>
-
-
-
