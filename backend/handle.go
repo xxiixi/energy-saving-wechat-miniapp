@@ -33,6 +33,7 @@ func setSwitchStatusHandlerWrapper(app *application.App) http.HandlerFunc {
 			return
 		}
 		defer r.Body.Close()
+		log.Println("SwitchStatusHandler", string(bodyBytes))
 		// Parse the body content
 		values, err := url.ParseQuery(string(bodyBytes))
 		if err != nil {
@@ -83,6 +84,7 @@ func setACStatusHandlerWrapper(app *application.App) http.HandlerFunc {
 			return
 		}
 		defer r.Body.Close()
+		log.Println("ACStatusHandler", string(bodyBytes))
 		// Parse the body content
 		values, err := url.ParseQuery(string(bodyBytes))
 		if err != nil {
