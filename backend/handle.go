@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"net/url"
 	"strconv"
+	"log"
 
 	"EnergySaving/application"
 	"EnergySaving/application/sensor"
