@@ -1,22 +1,24 @@
 <!--pages/energySaving_alertDetail/alertDetail.wxml-->
 <view style="display: flex; flex-direction: column; margin-top: 16px;">
   <view class="title-container">
-    <view class="title-text">🎉 Solved Alert Detail</view>
+    <view class="title-text">🐝 Solved Alert Detail</view>
   </view> 
   <van-cell-group inset style="margin-top: 16px;">
     <van-cell title="📣 Alert {{alertDetail.id}} - Room {{alertDetail.room_id}}"  title-class="title" />
-    <van-cell title="Alert Type" value="{{alertDetail.alert_type === 0 ? 'Windows are detected open while AC is on' : 'The AC is running unnecessarily'}}" />
     <van-cell title="Alert Status" value="Alert Resolved ✅" />
+    <van-cell title="Alert Type" value="{{alertDetail.alert_type === 0 ? 'Windows are detected open while AC is on' : 'The AC is running unnecessarily'}}" />
 
     <van-cell wx:if="{{alertDetail.ac_id}}" title="AC ID" value="{{alertDetail.ac_id}}" />
     <van-cell wx:if="{{alertDetail.window_id}}" title="Window ID" value="{{alertDetail.window_id}}" />
-
-    <van-cell title="🏆 Reward" value="{{alertDetail.reward}} Points" />
-    <van-cell title="🪪 Solved By" value="{{alertDetail.solver ? 'User #' + alertDetail.solver : 'N/A'}}" />
-    <van-cell wx:if="{{alertDetail.solver_comment}}" title="📝 Solver Comment" value="{{alertDetail.solver_comment}}" />
   </van-cell-group>
 
-  <view style="margin-top: 16px; display: flex; justify-content: center; padding: 0 16px;">
-    <van-button type="info" bind:click="goBack">Return to Alert List</van-button>
+  <view style="margin-top: 16px; padding: 0 16px;">
+    <van-cell title="🏆 Reward" value="{{alertDetail.reward}} Points" />
+    <van-cell title="🧑‍🎓 Solved By" value="{{alertDetail.solver ? 'User #' + alertDetail.solver : 'N/A'}}" />
+    <van-cell wx:if="{{alertDetail.solver_comment}}" title="📝 Solver Comment" value="{{alertDetail.solver_comment}}" />
+  </view>
+
+  <view class="fixed-button">
+    <van-button custom-class="custom-button" type="info" bind:click="goBack">Return to Alert List</van-button>
   </view>
 </view>

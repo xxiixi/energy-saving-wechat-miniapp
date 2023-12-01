@@ -4,9 +4,9 @@
     <view class="title-text">🚨 Solve Alert {{alertDetail.id}}</view>
   </view> 
   <van-cell-group inset style="margin-top: 16px;">
-    <van-cell title="📣 Room {{alertDetail.room_id}} " title-class="title"/>
+    <van-cell title="📮 Room {{alertDetail.room_id}} " title-class="title"/>
+    <van-cell title="Alert Status" value="Alert Unresolved❗️"/>
     <van-cell title="Alert Type" value="{{alertDetail.alert_type === 0 ? 'Windows are detected open while AC is on' : 'The AC is running unnecessarily'}}" />
-    <van-cell title="Alert Status" value="Alert Unresolved ❌"/>
 
     <van-cell wx:if="{{alertDetail.ac_id}}" title="AC ID" value="{{alertDetail.ac_id}}" />
 
@@ -16,13 +16,12 @@
 
   <view style="margin-top: 16px; padding: 0 16px;">
     <van-cell title="🏆 Reward" value="{{alertDetail.reward}} Points" />
-  <van-cell title="👤 User ID" value="{{userId}}"/>
+  <van-cell title="🧑‍🎓 User ID" value="{{userId}}"/>
   <van-field label="📝 Comment" type="textarea" autosize="{{ {minRows: 1, maxRows: 4} }}" placeholder="Enter your comment here" bindinput="handleCommentChange" />
-
   </view>
 
-  <view style="margin-top: 16px; display: flex; justify-content: space-between; padding: 0 56px;">
-    <van-button custom-class="custom-button" type="info" bind:click="goBack">Return to List</van-button>
-    <van-button custom-class="custom-button" type="primary" bind:click="submitSolution">Submit Form</van-button>
+  <view class="fixed-button">
+    <van-button custom-class="custom-button" type="info" bind:click="goBack">Return to Alert List</van-button>
+    <van-button custom-class="custom-button" type="primary" bind:click="submitSolution">Submit Solution</van-button>
   </view>
 </view>

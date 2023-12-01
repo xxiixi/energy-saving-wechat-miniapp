@@ -26,8 +26,17 @@
   /* 可以添加更多样式，如颜色等 */
 }
 
-.custom-button {
-  flex: 1; /* 使按钮在 flex 容器中等宽 */
-  margin: 0 5px; /* 为按钮添加一些间距 */
-  border-radius: 25px; /* 设置按钮的圆角 */
+.fixed-button .custom-button {
+  border-radius: 20px !important;
+  flex-grow: 1;
+  margin: 0 5px; /* 每个按钮之间增加 5px 的边距 */
+}
+
+.fixed-button {
+  position: fixed;
+  bottom: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center; /* 使按钮集中在中间 */
+  padding: 0 5px; /* 增加容器两侧的内边距 */
 }

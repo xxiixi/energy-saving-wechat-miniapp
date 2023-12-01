@@ -1,7 +1,7 @@
 <!--pages/energySaving_projectProposal/projectProposal.wxml-->
 <view style="display: flex; flex-direction: column; margin-top: 16px;">
   <view class="title-container">
-    <view class="title-text">🌿 Project Proposal</view>
+    <view class="title-text">♻ Project Proposal</view>
   </view>
 
   <van-cell-group style="margin-top: 16px;">
@@ -22,11 +22,11 @@
 
     <view class="cell">
       <view class="cell-title">💻 Technology</view>
-      <view class="cell-content">frontend: miniprogram or web, backend: golang, mysql, hardware: temperature sensors, switch sensors</view>
+      <text class="cell-content">Frontend: miniprogram \n Backend: golang, mysql \n Hardware: temperature sensors, switch sensors</text>
     </view>
   </van-cell-group>
 
-  <view style="margin-top: 20px; display: flex; justify-content: center; padding: 0 16px;">
-    <van-button type="info" bind:click="goBack">Return to Alert List</van-button>
+  <view class="fixed-button">
+    <van-button custom-class="custom-button" type="info" bind:click="goBack">Return to Alert List</van-button>
   </view>
 </view>

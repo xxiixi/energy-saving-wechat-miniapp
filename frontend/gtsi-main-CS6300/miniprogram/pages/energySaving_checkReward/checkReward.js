@@ -45,6 +45,12 @@ Page({
     });
   },
 
+  goBack: function() {
+    wx.navigateBack({
+      delta: 1 // 返回上一级页面
+    });
+  },
+
 
     /**
      * Lifecycle function--Called when page load
@@ -64,7 +70,7 @@ Page({
      * Lifecycle function--Called when page show
      */
     onShow() {
-
+      this.fetchUserRewards();
     },
 
     /**

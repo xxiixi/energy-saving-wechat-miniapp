@@ -5,17 +5,13 @@
   </view>
 
   <van-cell-group style="margin-top: 16px;">
-  <van-cell use-label-slot title="👤 Your User ID">
-    <view class="input-button-container" slot="label">
-      <input type="number" placeholder="Enter your User ID" class="user-id-input" bindinput="handleUserIdInput" disabled value="{{userId}}" />
-      <van-button type="info" bind:click="fetchUserRewards">Check</van-button>
-    </view>
-  </van-cell>
-</van-cell-group>
+    <van-cell use-label-slot title="🧑‍🎓 Hi, User {{userId}}"></van-cell>
+  <view class="points-display">
+    <van-cell title="🎉 Your current reward point is {{rewardPoints}}" />
+  </view>
+  </van-cell-group>
 
-
-  <view class="points-display" style="margin-top: 16px;">
-    <van-cell title="🎉 Your Reward Points" value="{{ rewardPoints }}" />
+  <view class="fixed-button">
+    <van-button custom-class="custom-button" type="info" bind:click="goBack">Return to Alert List</van-button>
   </view>
 </view>
-
