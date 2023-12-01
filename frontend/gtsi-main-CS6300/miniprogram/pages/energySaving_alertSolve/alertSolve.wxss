@@ -21,15 +21,14 @@
 }
 
 .title-text {
-  font-size: 20px; /* 调整字体大小 */
-  font-weight: bold; /* 字体加粗 */
-  /* 可以添加更多样式，如颜色等 */
+  font-size: 20px; 
+  font-weight: bold; 
 }
 
 .fixed-button .custom-button {
   border-radius: 20px !important;
   flex-grow: 1;
-  margin: 0 5px; /* 每个按钮之间增加 5px 的边距 */
+  margin: 0 5px; 
 }
 
 .fixed-button {
@@ -37,6 +36,6 @@
   bottom: 30px;
   width: 100%;
   display: flex;
-  justify-content: center; /* 使按钮集中在中间 */
-  padding: 0 5px; /* 增加容器两侧的内边距 */
+  justify-content: center;
+  padding: 0 5px; 
 }

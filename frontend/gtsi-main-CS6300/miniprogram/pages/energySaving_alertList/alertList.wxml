@@ -1,42 +1,37 @@
-<view style="display: column;">
-</view>
-
-  <view>
+<view style="display: column;"></view>
+<view>
   <view class="header" class="page-header">EnergySaving Alerts</view>
-
   <view style="margin-top: 16px;">
-  <van-grid column-num="2" clickable  >
-        <van-grid-item icon="/images/energySaving.png" text="Project Proposal" url="/pages/energySaving_projectProposal/projectProposal" />
-        <van-grid-item icon="/images/trophy.png" text="Check my Rewards Points" url="/pages/energySaving_checkReward/checkReward" />
-  </van-grid>
-
-  <van-sticky>
-    <van-dropdown-menu>
-    <van-dropdown-item value="{{selectedStatus}}" options="{{statusOptions}}" bind:change="onStatusChange" />
-    <van-dropdown-item value="{{selectedSort}}" options="{{sortOptions}}" bind:change="onSortChange" />
-  </van-dropdown-menu>
-  </van-sticky>
+    <van-grid column-num="2" clickable  >
+      <van-grid-item icon="/images/energySaving.png" text="Project Proposal" url="/pages/energySaving_projectProposal/projectProposal" />
+      <van-grid-item icon="/images/trophy.png" text="Check my Rewards Points" url="/pages/energySaving_checkReward/checkReward" />
+    </van-grid>
+    <van-sticky>
+      <van-dropdown-menu>
+        <van-dropdown-item value="{{selectedStatus}}" options="{{statusOptions}}" bind:change="onStatusChange" />
+        <van-dropdown-item value="{{selectedSort}}" options="{{sortOptions}}" bind:change="onSortChange" />
+      </van-dropdown-menu>
+    </van-sticky>
   </view>
 
   <view class="cell-group-container" style="margin-top: 10px;">
-  <van-cell-group wx:for="{{ alerts }}" wx:for-item="alert" wx:key="alert.id">
-    <van-cell url="{{alert.status === 0 ? '/pages/energySaving_alertSolve/alertSolve?alertID=' + alert.id : '/pages/energySaving_alertDetail/alertDetail?alertID=' + alert.id}}"  clickable>
-      <view slot="title" class="title">
-      <view class="van-cell-text">Alert {{ alert.id}} - Room {{ alert.room_id }}</view>
-      <view style="width: 8px;"></view>
-      <van-tag plain type="primary">Reward {{ alert.reward}}</van-tag>
-      <van-tag color="{{ alert.status === 1 ? '#006FFF' : '#DD3265' }}" style="margin-left: 5px">{{ alert.status === 1 ? 'Solved By: User #' + alert.solver : 'Unresolved' }}</van-tag>
-      <van-tag color="{{ alert.status === 0 ? '#F1C40F' : '#33cc33' }}" style="margin-left: 5px">{{ alert.status_text }}</van-tag>
-
-      </view>
-      <view slot="label" style="display: flex; align-items: center; justify-content: space-between;">
-        <text>
-          Reward: {{ alert.reward }} Points
-        </text>
-      </view>
-    </van-cell>
-  </van-cell-group>
-</view>
+    <van-cell-group wx:for="{{ alerts }}" wx:for-item="alert" wx:key="alert.id">
+      <van-cell url="{{alert.status === 0 ? '/pages/energySaving_alertSolve/alertSolve?alertID=' + alert.id : '/pages/energySaving_alertDetail/alertDetail?alertID=' + alert.id}}"  clickable>
+        <view slot="title" class="title">
+          <view class="van-cell-text">Alert {{ alert.id}} - Room {{ alert.room_id }}</view>
+          <view style="width: 8px;"></view>
+          <van-tag plain type="primary">Reward {{ alert.reward}}</van-tag>
+          <van-tag color="{{ alert.status === 1 ? '#006FFF' : '#DD3265' }}" style="margin-left: 5px">{{ alert.status === 1 ? 'Solved By: User #' + alert.solver : 'Unresolved' }}</van-tag>
+          <van-tag color="{{ alert.status === 0 ? '#F1C40F' : '#33cc33' }}" style="margin-left: 5px">{{ alert.status_text }}</van-tag>
+        </view>
+        <view slot="label" style="display: flex; align-items: center; justify-content: space-between;">
+          <text>
+            Reward: {{ alert.reward }} Points
+          </text>
+        </view>
+      </van-cell>
+    </van-cell-group>
+  </view>
 
   <view style="display: flex; flex-direction: column; align-items: center;" wx:if="{{ hasMore }}">
     <van-loading color="#1989fa" type="spinner" />

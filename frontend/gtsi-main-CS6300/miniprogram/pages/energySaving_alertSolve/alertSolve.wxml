@@ -7,12 +7,9 @@
     <van-cell title="📮 Room {{alertDetail.room_id}} " title-class="title"/>
     <van-cell title="Alert Status" value="Alert Unresolved❗️"/>
     <van-cell title="Alert Type" value="{{alertDetail.alert_type === 0 ? 'Windows are detected open while AC is on' : 'The AC is running unnecessarily'}}" />
-
     <van-cell wx:if="{{alertDetail.ac_id}}" title="AC ID" value="{{alertDetail.ac_id}}" />
-
     <van-cell wx:if="{{alertDetail.window_id}}" title="Window ID" value="{{alertDetail.window_id}}" />
   </van-cell-group>
-
 
   <view style="margin-top: 16px; padding: 0 16px;">
     <van-cell title="🏆 Reward" value="{{alertDetail.reward}} Points" />

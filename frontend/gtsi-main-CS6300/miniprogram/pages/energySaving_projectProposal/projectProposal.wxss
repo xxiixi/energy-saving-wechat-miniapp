@@ -11,7 +11,7 @@
 
 .cell {
   padding: 10px;
-  border-bottom: 1px solid #eee; /* 如果需要分隔线 */
+  border-bottom: 1px solid #eee;
 }
 
 .cell-title {

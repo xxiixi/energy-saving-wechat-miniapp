@@ -11,8 +11,6 @@
         { name: 'Close', value: 0 }
       ],
       selectedStatus: { name: 'Select Status', value: null },
-      // acStatus: null, // Store the selected air conditioner status
-      // switchStatus: null, // Store the selected switch status
     },
 
     onLoad: function(options) {

@@ -9,7 +9,7 @@ Page({
     },
     goBack: function() {
       wx.navigateBack({
-        delta: 1 // 返回上一个页面
+        delta: 1 
       });
     },
 

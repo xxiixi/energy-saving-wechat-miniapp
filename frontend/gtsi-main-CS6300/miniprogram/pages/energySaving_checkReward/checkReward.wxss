@@ -1,15 +1,12 @@
 /* pages/energySaving_checkReward/checkReward.wxss */
-/* pages/checkReward/checkReward.wxss */
-
 .title-container {
   display: flex;
   justify-content: center;
 }
 
 .title-text {
-  font-size: 20px; /* 调整字体大小 */
-  font-weight: bold; /* 字体加粗 */
-  /* 可以添加更多样式，如颜色等 */
+  font-size: 20px; 
+  font-weight: bold; 
 }
 
 .points-display .van-cell__title {
@@ -18,7 +15,7 @@
 
 .points-display .van-cell__value {
   text-align: right;
-  flex: 1; /* 确保占据所有可用空间 */
+  flex: 1; 
 }
 
 .fixed-button .custom-button {

@@ -65,7 +65,6 @@ Page({
         filteredAlerts.sort((a, b) => b.reward - a.reward);
         break;
       case 'default':
-        // 默认排序逻辑（如果有的话），或者不做任何排序
         break;
     }
     // Process alerts for display
@@ -95,9 +94,6 @@ Page({
     this.processAndFilterAlerts();
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady() {
 
   },
@@ -108,37 +104,22 @@ Page({
     this.fetchAlerts();
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
   onHide() {
 
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
   onUnload() {
 
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
   onPullDownRefresh() {
 
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
   onReachBottom() {
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage() {
 
   }
