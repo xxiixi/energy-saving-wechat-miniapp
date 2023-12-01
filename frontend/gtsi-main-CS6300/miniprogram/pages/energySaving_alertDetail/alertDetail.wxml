@@ -16,9 +16,7 @@
     <van-cell wx:if="{{alertDetail.solver_comment}}" title="📝 Solver Comment" value="{{alertDetail.solver_comment}}" />
   </van-cell-group>
 
-  <view style="height: 16px;"></view>
-
-  <view style="padding: 0 16px;">
+  <view style="margin-top: 16px; display: flex; justify-content: center; padding: 0 16px;">
     <van-button type="info" bind:click="goBack">Return to Alert List</van-button>
   </view>
 </view>

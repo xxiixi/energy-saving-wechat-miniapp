@@ -12,7 +12,9 @@
     "pages/seatReservation/index",
     "pages/energySaving_alertList/alertList",
     "pages/energySaving_alertDetail/alertDetail",
-    "pages/energySaving_alertSolve/alertSolve"
+    "pages/energySaving_alertSolve/alertSolve",
+    "pages/energySaving_checkReward/checkReward",
+    "pages/energySaving_projectProposal/projectProposal"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

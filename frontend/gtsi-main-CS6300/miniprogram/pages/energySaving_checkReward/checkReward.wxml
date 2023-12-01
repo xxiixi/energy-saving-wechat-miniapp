@@ -1,0 +1,21 @@
+<!--pages/energySaving_checkReward/checkReward.wxml-->
+<view style="display: flex; flex-direction: column; margin-top: 16px;">
+  <view class="title-container">
+    <view class="title-text">🏆 Check Rewards Points</view>
+  </view>
+
+  <van-cell-group style="margin-top: 16px;">
+  <van-cell use-label-slot title="👤 Your User ID">
+    <view class="input-button-container" slot="label">
+      <input type="number" placeholder="Enter your User ID" class="user-id-input" bindinput="handleUserIdInput" disabled value="{{userId}}" />
+      <van-button type="info" bind:click="fetchUserRewards">Check</van-button>
+    </view>
+  </van-cell>
+</van-cell-group>
+
+
+  <view class="points-display" style="margin-top: 16px;">
+    <van-cell title="🎉 Your Reward Points" value="{{ rewardPoints }}" />
+  </view>
+</view>
+

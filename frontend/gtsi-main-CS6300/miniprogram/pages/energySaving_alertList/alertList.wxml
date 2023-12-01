@@ -6,8 +6,8 @@
 
   <view style="margin-top: 16px;">
   <van-grid column-num="2" clickable  >
+        <van-grid-item icon="/images/energySaving.png" text="Project Proposal" url="/pages/energySaving_projectProposal/projectProposal" />
         <van-grid-item icon="/images/trophy.png" text="Check my Rewards Points" url="/pages/energySaving_checkReward/checkReward" />
-        <van-grid-item icon="/images/request.png" text="Book Request" url="" />
   </van-grid>
 
   <van-sticky>

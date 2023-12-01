@@ -1,0 +1,32 @@
+<!--pages/energySaving_projectProposal/projectProposal.wxml-->
+<view style="display: flex; flex-direction: column; margin-top: 16px;">
+  <view class="title-container">
+    <view class="title-text">🌿 Project Proposal</view>
+  </view>
+
+  <van-cell-group style="margin-top: 16px;">
+    <view class="cell">
+      <view class="cell-title">👥 Team Members</view>
+      <view class="cell-content">Xi Wang, Xuesen Cui, Yingqi Wang</view>
+    </view>
+
+    <view class="cell">
+      <view class="cell-title">🔍 Problems to Solve</view>
+      <view class="cell-content">Running ACs and open windows</view>
+    </view>
+
+    <view class="cell">
+      <view class="cell-title">📝 Approach</view>
+      <view class="cell-content">Temperature sensors are being added in the classroom to track temperature. Switch sensors are being placed on windows to track window status. The backend will check each sensor's status every 5 minutes. If the difference between the classroom temperature and local outdoor temperature is larger than the tested threshold, and windows are opening, email alerts will be sent to the operation team. A UI interface will be added to show the current classroom temperature, whether windows are open, and alert tickets need to be solved. Students also can check the alert tickets and will get credit for solving tickets.</view>
+    </view>
+
+    <view class="cell">
+      <view class="cell-title">💻 Technology</view>
+      <view class="cell-content">frontend: miniprogram or web, backend: golang, mysql, hardware: temperature sensors, switch sensors</view>
+    </view>
+  </van-cell-group>
+
+  <view style="margin-top: 20px; display: flex; justify-content: center; padding: 0 16px;">
+    <van-button type="info" bind:click="goBack">Return to Alert List</van-button>
+  </view>
+</view>

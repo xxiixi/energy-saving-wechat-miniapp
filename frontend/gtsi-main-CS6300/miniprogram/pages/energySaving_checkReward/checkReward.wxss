@@ -1,0 +1,43 @@
+/* pages/energySaving_checkReward/checkReward.wxss */
+/* pages/checkReward/checkReward.wxss */
+.container {
+  padding: 16px;
+}
+
+.page-header {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.input-container {
+  margin-bottom: 20px;
+}
+
+.points-display {
+  text-align: center;
+  font-size: 18px;
+}
+.title-container {
+  display: flex;
+  justify-content: center;
+}
+
+.title-text {
+  font-size: 20px; /* 调整字体大小 */
+  font-weight: bold; /* 字体加粗 */
+  /* 可以添加更多样式，如颜色等 */
+}
+
+.input-button-container {
+  display: flex;
+  align-items: center;
+}
+
+.user-id-input {
+  flex-grow: 1;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 4px;
+  margin-right: 10px; /* 为按钮提供间距 */
+}
