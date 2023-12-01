@@ -19,6 +19,6 @@
   <view style="height: 16px;"></view>
 
   <view style="padding: 0 16px;">
-    <van-button type="primary" custom-class="custom-blue-button" bind:click="goBack">Return to Alert List</van-button>
+    <van-button type="info" bind:click="goBack">Return to Alert List</van-button>
   </view>
 </view>

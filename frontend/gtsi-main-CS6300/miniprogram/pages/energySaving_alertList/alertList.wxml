@@ -4,7 +4,21 @@
   <view>
   <view class="header" class="page-header">EnergySaving Alerts</view>
 
-  <view class="cell-group-container" style="margin-top: 16px;">
+  <view style="margin-top: 16px;">
+  <van-grid column-num="2" clickable  >
+        <van-grid-item icon="/images/trophy.png" text="Check my Rewards Points" url="/pages/energySaving_checkReward/checkReward" />
+        <van-grid-item icon="/images/request.png" text="Book Request" url="" />
+  </van-grid>
+
+  <van-sticky>
+    <van-dropdown-menu>
+    <van-dropdown-item value="{{selectedStatus}}" options="{{statusOptions}}" bind:change="onStatusChange" />
+    <van-dropdown-item value="{{selectedSort}}" options="{{sortOptions}}" bind:change="onSortChange" />
+  </van-dropdown-menu>
+  </van-sticky>
+  </view>
+
+  <view class="cell-group-container" style="margin-top: 10px;">
   <van-cell-group wx:for="{{ alerts }}" wx:for-item="alert" wx:key="alert.id">
     <van-cell url="{{alert.status === 0 ? '/pages/energySaving_alertSolve/alertSolve?alertID=' + alert.id : '/pages/energySaving_alertDetail/alertDetail?alertID=' + alert.id}}"  clickable>
       <view slot="title" class="title">

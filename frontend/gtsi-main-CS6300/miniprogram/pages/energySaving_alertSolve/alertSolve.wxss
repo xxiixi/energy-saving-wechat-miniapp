@@ -26,7 +26,8 @@
   /* 可以添加更多样式，如颜色等 */
 }
 
-.custom-blue-button {
-  background-color: #1D7CF8; 
-  color: white; /* 如果需要的话，设置文字颜色 */
+.custom-button {
+  flex: 1; /* 使按钮在 flex 容器中等宽 */
+  margin: 0 5px; /* 为按钮添加一些间距 */
+  border-radius: 25px; /* 设置按钮的圆角 */
 }

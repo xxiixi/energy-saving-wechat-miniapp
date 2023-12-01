@@ -1,13 +1,31 @@
 // pages/energySaving_alertList/alertList.js
 Page({
-
   data: {
-    alerts: []
+    alerts: [],
+    originalAlerts: [], // To store the original alerts data
+    selectedStatus: '', // For status filter
+    selectedSort: '', // For sorting criteria
+
+    // Dropdown options for status filter
+    statusOptions: [
+      { text: 'All Statuses', value: '' },
+      { text: 'Open', value: 0 },
+      { text: 'Closed', value: 1 }
+    ],
+
+    // Dropdown options for sorting
+    sortOptions: [
+      { text: 'Default Sort', value: 'default' }, 
+      { text: 'Sort by Room ID', value: 'room' },
+      { text: 'Sort by Reward', value: 'reward' }
+    ],
+    selectedSort: 'default', 
   },
 
   onLoad(options) {
     this.fetchAlerts();
   },
+
   fetchAlerts: function() {
     const that = this;
     wx.request({
@@ -15,7 +33,10 @@ Page({
       method: 'GET',
       success(res) {
         if (res.statusCode === 200) {
-          that.processAlerts(res.data.alerts);
+          that.setData({
+            originalAlerts: res.data.alerts
+          });
+          that.processAndFilterAlerts();
         }
       },
       fail() {
@@ -27,8 +48,28 @@ Page({
     });
   },
 
-  processAlerts: function(alerts) {
-    const processedAlerts = alerts.map(alert => {
+  processAndFilterAlerts: function() {
+    let filteredAlerts = this.data.originalAlerts;
+
+    // Filter by status
+    if (this.data.selectedStatus !== '') {
+      filteredAlerts = filteredAlerts.filter(alert => alert.status === this.data.selectedStatus);
+    }
+
+    // Sort alerts
+    switch (this.data.selectedSort) {
+      case 'room':
+        filteredAlerts.sort((a, b) => a.room_id - b.room_id);
+        break;
+      case 'reward':
+        filteredAlerts.sort((a, b) => b.reward - a.reward);
+        break;
+      case 'default':
+        // 默认排序逻辑（如果有的话），或者不做任何排序
+        break;
+    }
+    // Process alerts for display
+    const processedAlerts = filteredAlerts.map(alert => {
       return {
         ...alert,
         status_text: alert.status === 0 ? 'Open' : 'Closed'
@@ -38,6 +79,20 @@ Page({
     this.setData({
       alerts: processedAlerts
     });
+  },
+
+  onStatusChange: function(event) {
+    this.setData({
+      selectedStatus: event.detail
+    });
+    this.processAndFilterAlerts();
+  },
+
+  onSortChange: function(event) {
+    this.setData({
+      selectedSort: event.detail
+    });
+    this.processAndFilterAlerts();
   },
 
   /**

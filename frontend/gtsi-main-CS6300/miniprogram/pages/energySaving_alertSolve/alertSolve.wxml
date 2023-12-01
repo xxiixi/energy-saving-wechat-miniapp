@@ -33,9 +33,8 @@
 
   </view>
 
-  <view style="margin-top: 16px; display: flex; justify-content: space-between; padding: 0 16px;">
-    <van-button custom-class="custom-blue-button" bind:click="goBack">Return</van-button>
-
-    <van-button type="primary" bind:click="submitSolution">Submit Solution</van-button>
+  <view style="margin-top: 16px; display: flex; justify-content: space-between; padding: 0 56px;">
+    <van-button custom-class="custom-button" type="info" bind:click="goBack">Return to List</van-button>
+    <van-button custom-class="custom-button" type="primary" bind:click="submitSolution">Submit Form</van-button>
   </view>
 </view>
