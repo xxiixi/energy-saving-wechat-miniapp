@@ -65,6 +65,8 @@ Page({
         filteredAlerts.sort((a, b) => b.reward - a.reward);
         break;
       case 'default':
+        // Assuming alert ID is a numeric value and is the property `id` of alert
+        filteredAlerts.sort((a, b) => a.id - b.id);
         break;
     }
     // Process alerts for display
@@ -79,7 +81,7 @@ Page({
       alerts: processedAlerts
     });
   },
-
+  
   onStatusChange: function(event) {
     this.setData({
       selectedStatus: event.detail
