@@ -26,7 +26,7 @@ Page({
     this.fetchAlerts();
   },
 
-  fetchAlerts: function() {
+  fetchAlerts: function(callback) {
     const that = this;
     wx.request({
       url: 'http://175.178.194.182:8080/alert/list',
@@ -37,6 +37,11 @@ Page({
             originalAlerts: res.data.alerts
           });
           that.processAndFilterAlerts();
+        } else {
+          wx.showToast({
+            title: 'Failed to fetch alerts',
+            icon: 'none'
+          });
         }
       },
       fail() {
@@ -44,6 +49,11 @@ Page({
           title: 'Failed to load alerts',
           icon: 'none'
         });
+      },
+      complete() {
+        if (typeof callback === 'function') {
+          callback();
+        }
       }
     });
   },
@@ -115,8 +125,15 @@ Page({
   },
 
   onPullDownRefresh() {
-
-  },
+    this.fetchAlerts(() => {
+      wx.showToast({
+        title: 'List refreshed',
+        icon: 'success',
+        duration: 1500
+      });
+      wx.stopPullDownRefresh(); // Stop the pull-down refresh action
+    });
+  },  
 
   onReachBottom() {
 
